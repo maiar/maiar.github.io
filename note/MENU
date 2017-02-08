@@ -2,16 +2,17 @@ Navigation
     GNSS        [gnss.html]
     INS         [ins.html]
     AoA         [aoa.html]
-    
+
 Control
     Transfer function           [transfer function.html]
     State space           [state space.html]
 
 Estimation
     Least square        	[least square.html]
+    Kalman filter           [kalman filter.html]
 
 Dynamics
-    Nonlinear Dynamics  [nonlinear dynamics.html]
+    Nonlinear dynamics  [nonlinear dynamics.html]
 
 Communication
     5G          	[fiveG.html]

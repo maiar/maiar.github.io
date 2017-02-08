@@ -1,0 +1,12 @@
+# jemdoc: menu{MENU}{example.html}
+= Kalman Filter
+[https://maiar.github.io// Liangchun Xu] ([maiar@outlook.com])
+
+== References
+
+- [./archieve/kf.pdf  A New Approach to Linear Filtering
+and Prediction Problems]
+
+== Reflection
+
+- [./archieve/me293project3c.pdf Automated Lane Keeping System for Self-driving Vehicles on Highway]
