@@ -1,0 +1,14 @@
+# jemdoc: menu{MENU}{example.html}
+= Global Navigation Satellite System (GNSS)
+[https://maiar.github.io// Liangchun Xu] ([maiar@outlook.com])
+
+== References
+
+- 
+
+== Reflection
+
+- [./archieve/navsdr.pdf NAVSDR: A GPU-based Modular GPS Software Receiver]
+
+- [./archieve/gpu_correlation.pdf Correlation acceleration in GNSS software receivers using a CUDA-enabled GPU]
+
