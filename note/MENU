@@ -4,26 +4,29 @@ Navigation
     AoA         [aoa.html]
 
 Control
-    Transfer function           [transfer function.html]
+    Transfer function     [transfer function.html]
     State space           [state space.html]
 
 Estimation
-    Least square        	[least square.html]
-    Kalman filter           [kalman filter.html]
+    Least square          [least square.html]
+    Kalman filter         [kalman filter.html]
 
 Dynamics
-    Nonlinear dynamics  [nonlinear dynamics.html]
+    Nonlinear dynamics    [nonlinear dynamics.html]
 
 Communication
-    5G          	[fiveG.html]
-    AM/FM		        [amfm.html]
+    5G          	      [fiveG.html]
+    AM/FM		          [amfm.html]
 
 Convex Optimization
-    Optimization        [optimization.html]
+    Optimization          [optimization.html]
 
 PDE
-    Linear    		[linearpde.html]
-    Nonlinear    	[nonlinearpde.html]
+    Linear    		      [linearpde.html]
+    Nonlinear    	      [nonlinearpde.html]
 
 Statistics
-    Variance    	[variance.html]
+    Variance    	      [variance.html]
+
+Electromagnetics
+    Maxwell equations      [maxwell.html]
