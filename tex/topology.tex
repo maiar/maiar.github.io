@@ -1,0 +1,243 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,graphicx,enumerate,latexsym}
+
+%%%%%%%%%% Start TeXmacs macros
+\newcommand{\dueto}[1]{\textup{\textbf{(#1) }}}
+\newcommand{\longupdownarrow}{{\mbox{\rotatebox[origin=c]{-90}{$\longleftrightarrow$}}}}
+\newcommand{\nobracket}{}
+\newcommand{\tmaffiliation}[1]{\\ #1}
+\newcommand{\tmemail}[1]{\\ \textit{Email:} \texttt{#1}}
+\newcommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
+\newenvironment{enumeratenumeric}{\begin{enumerate}[1.] }{\end{enumerate}}
+\newenvironment{proof}{\noindent\textbf{Proof\ }}{\hspace*{\fill}$\Box$\medskip}
+%%%%%%%%%% End TeXmacs macros
+
+\begin{document}
+
+
+
+\title{Topology}
+
+\author{
+  Liangchun Xu
+  \tmaffiliation{Department of Mechanical Engineering, Tufts University\\
+  574 Boston Avenue, Medford, 02155, US}
+  \tmemail{liangchun.xu@tufts.edu}
+}
+
+\date{March 4, 2019}
+
+\maketitle
+
+{\tableofcontents}
+
+\section{Cardinality and the Axiom of Choice}
+
+{\definition*{{\dueto{number sets}}Throughout these notes we will use the
+following notation:
+\begin{enumeratenumeric}
+  \item $\mathbb{N}= \tmop{the} \tmop{set} \tmop{of} \tmop{natural}
+  \tmop{numbers}$ (i.e., the positive integers).
+  
+  \item $\mathbb{Z}= \tmop{the} \tmop{set} \tmop{of} \tmop{all}
+  \tmop{integers}$.
+  
+  \item $\mathbb{Q}= \tmop{the} \tmop{set} \tmop{of} \tmop{rational}
+  \tmop{numbers}$.
+  
+  \item $\mathbb{R}= \tmop{the} \tmop{set} \tmop{of} \tmop{real}
+  \tmop{numbers}$.
+\end{enumeratenumeric}}}
+
+{\definition*{{\dueto{cardinality}}Two sets, $A \tmop{and} B$, have the same
+cardinality iff there is a 1-1, onto function $f : X \rightarrow \{ 1, 2,
+\ldots, n \}$ where $n$ is an element of $\mathbb{N}$. A set that's not finite
+is infinite.}}
+
+About the natural numbers $\mathbb{N}$: every non-empty set of natural numbers
+has a least element.
+
+{\theorem*{The even positive integers have the same cardinality as the natural
+numbers.}}
+
+\begin{proof}
+  The even positive integers are
+  \begin{eqnarray*}
+    \mathbb{E}^+ & = & \{ \nobracket 2 n | n \in \mathbb{N} \}
+  \end{eqnarray*}
+  Construct function $f : \mathbb{N} \rightarrow \mathbb{E}^+$
+  \[ f (n) = 2 n \]
+  $f (n)$ is in $\mathbb{E}^+$ by definition. Claim $f$ is 1-1 and onto:
+  
+  1-1: Suppose $f (n) = f (n')$, then $2 n = 2 n'$ and $n = n'$;
+  
+  onto: Suppose $b \in \mathbb{E}^+$, then $b = 2 n$ for some $n \in
+  \mathbb{N}$, $f (n) = 2 n = b$.
+  
+  As we have exhibited a $1 - 1$ onto function $f : \mathbb{N} \rightarrow
+  \mathbb{E}^+$, $| \mathbb{N} | = | \mathbb{E}^+ |$.
+\end{proof}
+
+{\theorem*{$| \mathbb{N} | = | \mathbb{Z} |$.}}
+
+\begin{proof}
+  The correpondence is
+  \[ \begin{array}{ccccccccccc}
+       0 & - 1 & 1 & - 2 & 2 & - 3 & 3 & - 4 & 4 & - 5 & \ldots\\
+       \longupdownarrow &  &  &  & \longupdownarrow &  &  &  &  &
+       \longupdownarrow & \\
+       1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & \ldots
+     \end{array} \]
+  
+  
+  Construct function $f : \mathbb{N} \rightarrow \mathbb{Z}$
+  \[ f (n) = \left\{\begin{array}{l}
+       \frac{n - 1}{2}, \tmop{if} n \in \mathbb{E}^+\\
+       - \frac{n}{2}, \tmop{if} n \in \mathbb{O}^+
+     \end{array}\right. \]
+  $f (n)$ is in $\mathbb{Z}$ by definition. Claim $f$ is 1-1 and onto:
+  
+  1-1: Suppose $f (n) = f (n')$, then
+  \[ \left\{\begin{array}{l}
+       \frac{n - 1}{2} = \frac{n' - 1}{2}, \tmop{if} n \in \mathbb{E}^+\\
+       - \frac{n}{2} = - \frac{n'}{2}, \tmop{if} n \in \mathbb{O}^+
+     \end{array}\right. \Rightarrow n = n' \]
+  Since $\frac{n - 1}{2} \geqslant 0 \tmop{and} - \frac{n}{2} < 0$, we have
+  $\frac{n - 1}{2} \neq - \frac{n'}{2}$; only the above two cases are
+  possible.
+  
+  onto: Suppose $b \in \mathbb{Z}$, then
+  \[ \left\{\begin{array}{l}
+       b = \frac{n - 1}{2}, \tmop{if} b \geqslant 0\\
+       b = - \frac{n}{2}, \tmop{if} b < 0
+     \end{array}\right. \]
+  for some $n \in \mathbb{N}$, $f (n) = b$.
+  
+  As we have exhibited a $1 - 1$ onto function $f : \mathbb{N} \rightarrow
+  \mathbb{Z}$, $| \mathbb{N} | = | \mathbb{Z} |$.
+\end{proof}
+
+{\theorem*{{\dueto{pigeon-hole principle}}Suppose that $n$ is a natural number
+and you have $n$ pidgeon-holes. If you have $m$ podgeons where $m > n$, and
+you put each pidgeon in one of your $n$ pidgeon-holes, there will be some hole
+which contains more than 1 pidgeon.}}
+
+\begin{proof}
+  Let $q_i$ be the number of pidgeons in each hole, then
+  \[ \sum_{i = 1}^n q_i = m \]
+  Suppose no hole contains more than 1 pidgeon, which is
+  \[ 0 \leqslant q_i \leqslant 1, \applicationspace{1 \tmop{em}} i = 1, 2,
+     \ldots n \]
+  Then we have
+  \[ \sum_{i = 1}^n q_i \leqslant \sum_{i = 1}^n 1 = n \]
+  Since $m > n$, then
+  \[ \sum_{i = 1}^n q_i < m \]
+  which leads to contradiction. Therefore the assumption is not correct. There
+  must be some hole which contains more than 1 pidgeon.
+\end{proof}
+
+{\theorem*{{\dueto{induction}}For each natural number $n$, let $S (n)$ be a
+statement that is either true or false. Then suppose that
+\begin{enumeratenumeric}
+  \item $S (1)$ is true.
+  
+  \item If $S (k)$ is true, then $S (k + 1)$ is true.
+\end{enumeratenumeric}
+Then $S (n)$ is true for all natural numbers $n$.}}
+
+\begin{proof}
+  Suppose there is an non-empty set
+  \[ X = \{ n \in \mathbb{N}, S (n) \tmop{is} \tmop{false} \} \]
+  There exists a smallest element $x \in X$ since $X \subseteq \mathbb{N}$.
+  
+  According to assumption 1 and the definiton of $X$, $x \neq 1 \tmop{and} x
+  > 1$.
+  
+  According to assumption 2, if $S (x)$ is false, then $S (x - 1)$ is also
+  false. Since $x - 1 < x$ and $x - 1 \in \mathbb{N}$, $x - 1$ becomes the
+  smallest element in $X$, which is contradictory to the fact that $x$ is the
+  smallest element in $X$. Therefore the assumption is wrong. $X$ is empty and
+  $S (n)$ is true for all natural numbers $n$.
+\end{proof}
+
+{\theorem*{Every subset of $\mathbb{N}$ is either finite or has the same
+cardinality as $\mathbb{N}$.}}
+
+\begin{proof}
+  Let $X \subseteq \mathbb{N}$, construct function $f : \mathbb{N} \rightarrow
+  X$
+  \begin{eqnarray*}
+    f (1) & = & \min (X)\\
+    f (2) & = & \min (X\backslash \{ f (1) \})\\
+    & \vdots & \\
+    f (n) & = & \min (X\backslash \{ f (1), f (2), \ldots, f (n - 1) \})
+  \end{eqnarray*}
+  if $X\backslash \{ f (1), f (2), \ldots, f (n - 1) \}$ is empty, then we
+  have a 1-1 bijection $f : \{ 1, 2, \ldots, n \} \rightarrow X$, which means
+  $X$ is finite. If $X$ is infinite, then claim $f : \mathbb{N} \rightarrow X$
+  is $1 - 1$ and onto:
+  
+  1-1: Suppose $f (n) = f (n')$, then $n = n'$.
+  
+  onto: Suppose $b \in X$, then $b = \min (X\backslash \{ f (1), f (2),
+  \ldots, f (n - 1) \})$ for some $n \in \mathbb{N}$, $f (n) = b$.
+  
+  As we have exhibited a $1 - 1$ onto function $f : \mathbb{N} \rightarrow X$,
+  $| \mathbb{N} | = | X |$.
+  
+  Therefore every subset of $\mathbb{N}$ is either finite or has the same
+  cardinality as $\mathbb{N}$.
+\end{proof}
+
+{\definition*{{\dueto{countable set}}A set that has the same cardinality as a
+subset of $\mathbb{N}$ is countable.}}
+
+{\theorem*{Every infinite set has a countably infinite subset.}}
+
+{\theorem*{A set is infinite iff there is a 1-1 function from the set into a
+proper subset of itself.}}
+
+{\theorem*{$\mathbb{Q}$ is countable.}}
+
+\begin{proof}
+  Construct function $f : \mathbb{N} \rightarrow \mathbb{Q}$
+  
+  
+  \[ \begin{array}{lllllllllllll}
+       & 0 &  & - 1 &  & 1 &  & - 2 &  & 2 &  & - 3 & \ldots\\
+       1 & \frac{0}{1} & \rightarrow & - \frac{1}{1} & \rightarrow &
+       \frac{1}{1} &  & - \frac{2}{1} & \rightarrow & \frac{2}{1} &  & -
+       \frac{3}{1} & \ldots\\
+       &  &  &  & \swarrow &  & \nearrow &  & \swarrow &  & \nearrow &  & \\
+       2 &  &  & - \frac{1}{2} &  & \frac{1}{2} &  & - \frac{2}{2} &  &
+       \frac{2}{2} &  &  & \\
+       &  &  & \downarrow & \nearrow &  & \swarrow &  & \nearrow &  &  &  &
+       \\
+       3 &  &  & - \frac{1}{3} &  & \frac{1}{3} &  & - \frac{2}{3} &  &  &  & 
+       & \\
+       &  &  &  & \swarrow &  & \nearrow &  &  &  &  &  & \\
+       4 &  &  & - \frac{1}{4} &  & \frac{1}{4} &  &  &  &  &  &  & \\
+       &  &  & \downarrow & \nearrow &  &  &  &  &  &  &  & \\
+       5 &  &  & - \frac{1}{5} &  &  &  &  &  &  &  &  & \\
+       \vdots &  &  &  &  &  &  &  &  &  &  &  & 
+     \end{array} \]
+  
+  
+  $f (n)$ is in $\mathbb{Z}$ by definition. Claim $f$ is 1-1 and onto:
+  
+  1-1: Suppose $f (n) = f (n')$, then
+  
+  
+  
+  onto: Suppose $b \in \mathbb{Z}$, then
+  
+  \
+  
+  for some $n \in \mathbb{N}$, $f (n) = b$.
+  
+  As we have exhibited a $1 - 1$ onto function $f : \mathbb{N} \rightarrow
+  \mathbb{Q}$, $| \mathbb{N} | = | \mathbb{Q} |$.
+\end{proof}
+
+\end{document}

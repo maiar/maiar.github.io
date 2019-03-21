@@ -67,14 +67,15 @@ ol {
 	Helper CSS
 -----------------------*/
 .spad {
-	padding-top: 125px;
+	padding-top: 50px;
 	padding-bottom: 110px;
 }
 
 .section-title h2 {
 	display: inline-block;
 	position: relative;
-	margin-bottom: 110px;
+	/* margin-bottom: 110px; */
+    margin-bottom: 50px;
 	padding-bottom: 2px;
 	line-height: normal;
 }
@@ -1435,3 +1436,24 @@ ol {
 		padding-top: 250px;
 	}
 }
+
+mobileSelect {
+    title: 'Select an option',
+    buttonSave: 'Save',
+    buttonClear: 'Clear',
+    buttonCancel: 'Cancel',
+    padding: {
+        'top': '20px',
+        'left': '20px',
+        'right': '20px',
+        'bottom': '20px'
+    },
+    animation: 'scale',
+    animationSpeed: 400,
+    theme: 'white',
+    onOpen: function () {
+    },
+    onClose: function () {
+    },
+    style: 'btn-default'
+};

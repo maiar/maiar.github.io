@@ -1,0 +1,1909 @@
+\documentclass{article}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,graphicx,enumerate,latexsym}
+
+%%%%%%%%%% Start TeXmacs macros
+\catcode`\<=\active \def<{
+\fontencoding{T1}\selectfont\symbol{60}\fontencoding{\encodingdefault}}
+\catcode`\>=\active \def>{
+\fontencoding{T1}\selectfont\symbol{62}\fontencoding{\encodingdefault}}
+\newcommand{\assign}{:=}
+\newcommand{\dueto}[1]{\textup{\textbf{(#1) }}}
+\newcommand{\exterior}{\wedge}
+\newcommand{\longupdownarrow}{{\mbox{\rotatebox[origin=c]{-90}{$\longleftrightarrow$}}}}
+\newcommand{\nobracket}{}
+\newcommand{\nocomma}{}
+\newcommand{\tmaffiliation}[1]{\\ #1}
+\newcommand{\tmem}[1]{{\em #1\/}}
+\newcommand{\tmemail}[1]{\\ \textit{Email:} \texttt{#1}}
+\newcommand{\tmmathbf}[1]{\ensuremath{\boldsymbol{#1}}}
+\newcommand{\tmop}[1]{\ensuremath{\operatorname{#1}}}
+\newcommand{\tmstrong}[1]{\textbf{#1}}
+\newcommand{\tmtextit}[1]{{\itshape{#1}}}
+\newenvironment{enumeratenumeric}{\begin{enumerate}[1.] }{\end{enumerate}}
+\newenvironment{enumerateroman}{\begin{enumerate}[i.] }{\end{enumerate}}
+\newenvironment{proof}{\noindent\textbf{Proof\ }}{\hspace*{\fill}$\Box$\medskip}
+\providecommand{\xequal}[2][]{\mathop{=}\limits_{#1}^{#2}}
+%%%%%%%%%% End TeXmacs macros
+
+\begin{document}
+
+
+
+\title{Differential Geometry}
+
+\author{
+  Liangchun Xu
+  \tmaffiliation{Department of Mechanical Engineering, Tufts University\\
+  574 Boston Avenue, Medford, 02155, US}
+  \tmemail{liangchun.xu@tufts.edu}
+}
+
+\date{March 4, 2019}
+
+\maketitle
+
+{\tableofcontents}
+
+\section{Calculus on Euclidean Space}
+
+\subsection{Directional Direvatives}
+
+The directional derivative of a function $f (\mathbf{p})$, with respect to a
+tangent vector {\tmstrong{$\mathbf{v}$}} is a real number
+\begin{eqnarray}
+  \mathbf{v} [f] & \equiv & \left. \frac{d}{d t} \right|_{t = 0} f
+  (\mathbf{p}+ t\mathbf{v}) \nonumber\\
+  & = & \sum \mathbf{v}_i U_i (\mathbf{p}) [f] \nonumber\\
+  & = & \sum \mathbf{v}_i \frac{\partial f}{\partial x_i} (\mathbf{p}) 
+\end{eqnarray}
+The differential $d f$ of $f$ is the 1-form such that $d f (v_p) = v_p [f]$
+for all tangent vector $v_p$ {\cite{o2006elementary}}.
+
+{\lemma*{Let $\alpha$ be a curve in $\mathbb{R}^3$ and let $f$ be a
+differentiable function on $\mathbb{R}^3$. Then
+\begin{equation}
+  \alpha' (t) [f] = \frac{d (f (\alpha))}{d t} (t)
+\end{equation}}}
+
+\begin{proof}
+  Since $\alpha' = \left( \frac{d \alpha_1}{d t}, \frac{d \alpha_2}{d t},
+  \frac{d \alpha_3}{d t} \right)$, then by definiton of directional
+  derivative,
+  \[ \alpha' (t) [f] = \sum_i \frac{d \alpha_i}{d t} (t) \frac{\partial
+     f}{\partial x_i} (\alpha (t)) = \frac{d (f (\alpha))}{d t} (t) \]
+\end{proof}
+
+Two useful identities are
+\begin{eqnarray}
+  U_i [f] & = & \frac{\partial f}{\partial x_i} \\
+  d x_i (v) & = & v_i 
+\end{eqnarray}
+Differential forms on $\mathbb{R}^3$ have the following 1-1 correspondences:
+0-forms can be identified with scalar functions; 1-forms can be identified
+with vector fields; 2-forms can also be identified with vector fields via
+right-hand rule; 3-forms can be identified with scalar functions.
+\[ \sum_i f_i d x_i \overset{(1)}{\longleftrightarrow} \sum_i f_i U_i
+   \overset{(2)}{\longleftrightarrow} f_1 d x_2 d x_3 + f_2 d x_3 d x_1 + f_3
+   d x_1 d x_2 \]
+Therefore we have
+\begin{eqnarray}
+  f & = & f (x_1, \ldots, x_i, \ldots) \nonumber\\
+  d f & \overset{(1)}{\longleftrightarrow} & \tmop{grad} f \\
+  & = & \sum_i \frac{\partial f}{\partial x_i} U_i \nonumber\\
+  V & = & \sum_i f_i U_i \nonumber\\
+  \tmop{If} \tmop{an} 1 \tmop{form} \phi \overset{(1)}{\longleftrightarrow} V,
+  \tmop{then} d \phi & \overset{(2)}{\longleftrightarrow} & \tmop{curl} V
+  \nonumber\\
+  & = & \left( \frac{\partial f_3}{\partial x_2} - \frac{\partial
+  f_2}{\partial x_3} \right) U_1 + \left( \frac{\partial f_1}{\partial x_3} -
+  \frac{\partial f_3}{\partial x_1} \right) U_2 + \left( \frac{\partial
+  f_2}{\partial x_1} - \frac{\partial f_1}{\partial x_2} \right) U_3 \\
+  \tmop{If} a 2 \tmop{form} \eta \overset{(1)}{\longleftrightarrow} V,
+  \tmop{then} d \eta & = & (\tmop{div} V) d x d y d z \nonumber\\
+  & = & \left( \sum_i \frac{\partial f_i}{\partial x_i} \right) d x d y d z 
+\end{eqnarray}
+The correspondences can be summarized as follows.
+
+\begin{table}[h]
+  \begin{tabular}{llll}
+    0-form & $\omega \mapsto d \omega$ & $f \mapsto \nabla f$ & gradient\\
+    1-form &  & $V \mapsto \nabla \times V$ & curl\\
+    2-form &  & $V \mapsto \nabla \cdot V$ & divergence\\
+    0-form & $d (d \omega) = 0$ & $\nabla \times (\nabla f) = 0$ & \\
+    1-form &  & $\nabla \cdot (\nabla \times V) = 0$ & 
+  \end{tabular}
+  \caption{Correspondences between forms and functions, vector fields }
+\end{table}
+
+In summary, on an open subset $U$ of $\mathbb{R}^3$, there are identifications
+\[ \begin{array}{ccccccc}
+     \Omega^0 (U) & \xrightarrow{d} & \Omega^1 (U) & \xrightarrow{d} &
+     \Omega^2 (U) & \xrightarrow{d} & \Omega^3 (U)\\
+     \simeq \longupdownarrow &  & \simeq \longupdownarrow &  & \simeq
+     \longupdownarrow &  & \simeq \longupdownarrow\\
+     C^{\infty} (U) & \xrightarrow[\tmop{grad}]{} & \mathfrak{X} (U) &
+     \xrightarrow[\tmop{curl}]{} & \mathfrak{X} (U) &
+     \xrightarrow[\tmop{div}]{} & C^{\infty} (U)
+   \end{array} \]
+
+\subsection{Vector Fields}
+
+A vector field $\tmmathbf{W}$ on an open subset $U$ of $\mathbb{R}^n$ is a
+function that assigns to each point $p$ in $U$ a tangent vector
+$\tmmathbf{W}_p$ in $T_p (\mathbb{R}^n)$ {\cite{tu2010introduction}}.
+\begin{equation}
+  \tmmathbf{W}_p = \sum w^i (\mathbf{p}) \left. \frac{\partial}{\partial x^i}
+  \right|_p
+\end{equation}
+where $w^i$ are real-valued functions on $U$. Define a new function
+$\tmmathbf{W}f$ on $U$ by
+\begin{equation}
+  (\tmmathbf{W}f) (\mathbf{p}) =\tmmathbf{W}_p f = \sum w^i (\mathbf{p})
+  \left. \frac{\partial f}{\partial x^i} \right|_p
+\end{equation}
+or simply
+\begin{equation}
+  \tmmathbf{W}f = \sum w^i \frac{\partial f}{\partial x^i}
+\end{equation}
+
+\subsection{Covariant Direvatives}
+
+The covariant derivative of a vector field {\tmstrong{{\tmem{$W = \sum w_i
+U_i$}}}} with respect to a tangent vector {\tmstrong{$\mathbf{v}$}} is the
+tangent vector
+\begin{eqnarray}
+  \nabla_v \tmmathbf{W} & \equiv & \left. \frac{d}{d t} \right|_{t = 0}
+  \tmmathbf{W} (\mathbf{p}+ t\mathbf{v}) \nonumber\\
+  & = & \sum \mathbf{v} [w_i] U_i (\mathbf{p}) \\
+  & = & \left(\begin{array}{c}
+    \mathbf{v} [w_1]\\
+    \mathbf{v} [w_2]\\
+    \mathbf{v} [w_3]
+  \end{array}\right) \nonumber
+\end{eqnarray}
+{\example*{suppose $\tmmathbf{W}= x^2 U_1 + y z U_3$, and $\mathbf{v}= (- 1,
+0, 2) \tmop{at} \mathbf{p}= (2, 1, 0)$, then
+\begin{eqnarray*}
+  \mathbf{p}+ t\mathbf{v} & = & (2 - t, 1, 2 t)\\
+  \tmmathbf{W} (\mathbf{p}+ t\mathbf{v}) & = & (2 - t)^2 U_1 + 2 \tmop{tU}_3\\
+  \nabla_v \tmmathbf{W} & = & \tmmathbf{W} (\mathbf{p}+ t\mathbf{v})^{'} (0)\\
+  & = & - 4 U_1 + 2 U_3
+\end{eqnarray*}}}
+
+The covariant derivative of a vector field {\tmstrong{{\tmem{$W${\tmem{}}}}}}
+with respect to a vector field {\tmstrong{$\tmmathbf{V}$}} is the vector field
+\begin{eqnarray}
+  \nabla_V \tmmathbf{W} & = & \sum \tmmathbf{V} [w_i] U_i 
+\end{eqnarray}
+{\example*{suppose $\tmmathbf{W}= x^2 U_1 + y z U_3$, and $\tmmathbf{V}= (y -
+x) U_1 + x y U_3$, then
+\begin{eqnarray*}
+  \tmmathbf{V} [x^2] & = & (y - x) U_1 [x^2]\\
+  & = & 2 x (y - x)\\
+  \tmmathbf{V} [y z] & = & x y U_3 [y z]\\
+  & = & x y^2\\
+  \nabla_V \tmmathbf{W} & = & 2 x (y - x) U_1 + x y^2 U_3
+\end{eqnarray*}}}
+
+{\theorem*{Let $\mathbf{v}$ and $\mathbf{w}$ be tangent vectors to
+$\mathbb{R}^3$ at $\mathbf{p}$, and let $\tmmathbf{Y}$ and $\tmmathbf{Z}$ be
+vector fields on $\mathbb{R}^3$. Then for numbers $a, b$ and functions $f$,
+\begin{eqnarray*}
+  \nabla_{a v + b w} Y & = & a \nabla_v Y + b \nabla_w Y\\
+  \nabla_v (a Y + b Z) & = & a \nabla_v Y + b \nabla_v Z\\
+  \nabla_v (f Y) & = & v [f] Y (\mathbf{p}) + f (\mathbf{p}) \nabla_v Y\\
+  v [Y \cdot Z] & = & \nabla_v Y \cdot Z (\mathbf{p}) + Y (\mathbf{p}) \cdot
+  \nabla_v Z
+\end{eqnarray*}}}
+
+\subsection{Differential Forms}
+
+{\definition*{The alternating multilinear functions with $k$ arguments on a
+vector space are called multicovectors of degree $k$, or $k -
+\tmop{covectors}$ for short.}}
+
+{\definition*{A 1-form $\phi$ on $\mathbb{R}^3$ is a real-valued function on
+the set of all tangent vectors to $\mathbb{R}^3$ such that $\phi$ is linear at
+each point, that is,
+\[ \phi (a\mathbf{v}+ b\mathbf{w}) = a \phi (\mathbf{v}) + b \phi (\mathbf{w})
+\]
+for any numbers $a, b$ and tangent vectors $\mathbf{v}, \mathbf{w}$ at the
+same point of $\mathbb{R}^3$.}}
+
+Let $f \tmop{and} g$ be real-valued functions on $\mathbb{R}^2$. It's proved
+that
+\begin{eqnarray}
+  d f \wedge d g & = & \left|\begin{array}{cc}
+    \frac{\partial f}{\partial x} & \frac{\partial f}{\partial y}\\
+    \frac{\partial g}{\partial x} & \frac{\partial g}{\partial y}
+  \end{array}\right| d x d y 
+\end{eqnarray}
+Therefore we have
+\begin{eqnarray}
+  d y \wedge d x & = & \left|\begin{array}{cc}
+    \frac{\partial y}{\partial x} & \frac{\partial y}{\partial y}\\
+    \frac{\partial x}{\partial x} & \frac{\partial x}{\partial y}
+  \end{array}\right| d x d y \nonumber\\
+  d y d x & = & \left|\begin{array}{cc}
+    0 & 1\\
+    1 & 0
+  \end{array}\right| d x d y \nonumber\\
+  d y d x & = & - d x d y 
+\end{eqnarray}
+{\theorem*{Let $f \tmop{and} g$ be functions (0-forms), $\phi \tmop{and} \psi$
+are 1-forms. Then
+\begin{eqnarray*}
+  d (f g) & = & (d f) g + f (d g)\\
+  d (f \phi) & = & d f \exterior \phi + f d \phi\\
+  d (\phi \exterior \psi) & = & d \phi \exterior \psi - \phi \exterior d \psi
+\end{eqnarray*}
+More generally, if $\tmmathbf{\xi}$ is a p-form and $\tmmathbf{\eta}$ is a
+q-form, then
+\begin{eqnarray}
+  \tmmathbf{\xi} \wedge \tmmathbf{\eta} & = & (- 1)^{p q} \tmmathbf{\eta}
+  \wedge \tmmathbf{\xi} \\
+  d (\tmmathbf{\xi} \wedge \tmmathbf{\eta}) & = & (d\tmmathbf{\xi}) \wedge
+  \tmmathbf{\eta}+ (- 1)^p \tmmathbf{\xi} \wedge (d\tmmathbf{\eta}) 
+\end{eqnarray}}}
+
+{\definition*{If $\phi = \sum f_i d x_i$ is a 1-form on $\mathbb{R}^3$, the
+exterior derivative of $\phi$ is the 2-form $d \phi = \sum d f_i \wedge d
+x_i$.}}
+\[ d \phi = \left( \frac{\partial f_2}{\partial x_1} - \frac{\partial
+   f_1}{\partial x_2} \right) d x_1 d x_2 + \left( \frac{\partial
+   f_3}{\partial x_2} - \frac{\partial f_2}{\partial x_3} \right) d x_2 d x_3
+   + \left( \frac{\partial f_1}{\partial x_3} - \frac{\partial f_3}{\partial
+   x_1} \right) d x_3 d x_1 \]
+Let $g$ be a real-valued function on $\mathbb{R}^3$, then we have
+\begin{eqnarray*}
+  d g & = & \sum \frac{\partial g}{\partial x_i} d x_i\\
+  & = & \sum f_i d x_i\\
+  f_i & = & \frac{\partial g_i}{\partial x_i}
+\end{eqnarray*}
+then we have
+\begin{eqnarray}
+  \left( \frac{\partial f_2}{\partial x_1} - \frac{\partial f_1}{\partial x_2}
+  \right) d x_1 d x_2 & = & \left( \frac{\partial}{\partial x_1}
+  \frac{\partial g}{\partial x_2} - \frac{\partial}{\partial x_2}
+  \frac{\partial g}{\partial x_1} \right) d x_1 d x_2 = 0 \nonumber\\
+  d (d g) & = & \left( \frac{\partial f_2}{\partial x_1} - \frac{\partial
+  f_1}{\partial x_2} \right) d x_1 d x_2 + \left( \frac{\partial f_3}{\partial
+  x_2} - \frac{\partial f_2}{\partial x_3} \right) d x_2 d x_3 + \left(
+  \frac{\partial f_1}{\partial x_3} - \frac{\partial f_3}{\partial x_1}
+  \right) d x_3 d x_1 \nonumber\\
+  d (d g) & = & 0 
+\end{eqnarray}
+The property holds in more generality: in fact, $\mathit{d} (\mathit{d
+\alpha}) = 0$ for any $\mathit{k}$-form {\alpha}; more
+succinctly,$\mathit{d}^2 = 0$. A $k - \tmop{form} \omega$ on $U$ is closed if
+$d \omega = 0$; it's exact if there is a $(k - 1) - \tmop{form} \tau$ such
+that $\omega = d \tau \tmop{on} U$. Since $d (d \tau) = 0$, every exact form
+is closed. \
+
+{\example*{{\dueto{Maxwell's Equation}}For connection form $\omega$, we have
+its exterior derivative {\cite{Chern2001}}
+\[ \Omega = d \omega, d \Omega = d (d \omega) = 0 \]
+When $S$ is 4-dimensional Lorenz manifold, then we have
+\[ d s^2 = - d x^2_0 + d x^2_1 + d x^2_2 + d x^2_3 \]
+Let $\Omega = \frac{1}{2} \sum F_{i j} d x_i \wedge d x_j$, where $F_{i j} = -
+F_{j i}$ is a 2-form {\cite{weyl1918gravitation}}, and the electromagnetic
+four-potential $A$ is a 1-form including an electric scalar potential and a
+magnetic vector potential.
+\begin{eqnarray*}
+  A & \overset{(1)}{\longleftrightarrow} & \left( \frac{\phi}{c}, \mathbf{A}
+  \right)\\
+  F & \overset{\tmop{def}}{=} & d A\\
+  F_{i j} & = & \frac{\partial A_i}{\partial x_j} - \frac{\partial
+  A_j}{\partial x_i}\\
+  F_{i j} & = & \left(\begin{array}{cccc}
+    0 & E_1 & E_2 & E_3\\
+    - E_1 & 0 & - B_3 & B_2\\
+    - E_2 & B_3 & 0 & - B_1\\
+    - E_3 & - B_2 & B_1 & 0
+  \end{array}\right)
+\end{eqnarray*}
+For $d s^2$, there is the operator $\star$ such that $d^{\star} = \star d
+\star$. If $j = (j_1, j_2, j_3)$, then
+\begin{eqnarray*}
+  J & = & - \rho d x_1 d x_2 d x_3 + d x_0 (j_1 d x_2 d x_3 + j_2 d x_3 d x_1
+  + j_3 d x_1 d x_2)
+\end{eqnarray*}
+Since $d F_{i j} \wedge d x_i \wedge d x_j$ is
+\[ \begin{array}{l}
+     \left(\begin{array}{cccc}
+       0 & d E_1 \wedge d x_0 \wedge d x_1 & d E_2 \wedge d x_0 \wedge d x_2 &
+       d E_3 \wedge d x_0 \wedge d x_3\\
+       - d E_1 \wedge d x_1 \wedge d x_0 & 0 & - d B_3 \wedge d x_1 \wedge d
+       x_2 & d B_2 \wedge d x_1 \wedge d x_3\\
+       - d E_2 \wedge d x_2 \wedge d x_0 & d B_3 \wedge d x_2 \wedge d x_1 & 0
+       & - d B_1 \wedge d x_2 \wedge d x_3\\
+       - d E_3 \wedge d x_3 \wedge d x_0 & - d B_2 \wedge d x_3 \wedge d x_1 &
+       d B_1 \wedge d x_3 \wedge d x_2 & 0
+     \end{array}\right)
+   \end{array} \]
+Moreover
+\begin{eqnarray*}
+  d E_1 \wedge d x_0 \wedge d x_1 & = & \left( \frac{\partial E_1}{\partial
+  x_0} d x_0 + \frac{\partial E_1}{\partial x_1} d x_1 + \frac{\partial
+  E_1}{\partial x_2} d x_2 + \frac{\partial E_1}{\partial x_3} d x_3 \right)
+  \wedge d x_0 \wedge d x_1\\
+  & = & \frac{\partial E_1}{\partial x_2} d x_2 \wedge d x_0 \wedge d x_1 +
+  \frac{\partial E_1}{\partial x_3} d x_3 \wedge d x_0 \wedge d x_1\\
+  & = & \frac{\partial E_1}{\partial x_2} d x_0 \wedge d x_1 \wedge d x_2 +
+  \frac{\partial E_1}{\partial x_3} d x_0 \wedge d x_1 \wedge d x_3
+\end{eqnarray*}
+Similarly we have
+\begin{eqnarray*}
+  d E_2 \wedge d x_0 \wedge d x_2 & = & - \frac{\partial E_2}{\partial x_1} d
+  x_0 \wedge d x_1 \wedge d x_2 + \frac{\partial E_2}{\partial x_3} d x_0
+  \wedge d x_2 \wedge d x_3\\
+  d E_3 \wedge d x_0 \wedge d x_3 & = & - \frac{\partial E_3}{\partial x_1} d
+  x_0 \wedge d x_1 \wedge d x_3 - \frac{\partial E_3}{\partial x_2} d x_0
+  \wedge d x_2 \wedge d x_3\\
+  - d B_3 \wedge d x_1 \wedge d x_2 & = & - \frac{\partial B_3}{\partial x_0}
+  d x_0 \wedge d x_1 \wedge d x_2 - \frac{\partial B_3}{\partial x_3} d x_1
+  \wedge d x_2 \wedge d x_3\\
+  d B_2 \wedge d x_1 \wedge d x_3 & = & \frac{\partial B_2}{\partial x_0} d
+  x_0 \wedge d x_1 \wedge d x_3 - \frac{\partial B_2}{\partial x_2} d x_1
+  \wedge d x_2 \wedge d x_3\\
+  - d B_1 \wedge d x_2 \wedge d x_3 & = & - \frac{\partial B_1}{\partial x_0}
+  d x_0 \wedge d x_2 \wedge d x_3 - \frac{\partial B_1}{\partial x_1} d x_1
+  \wedge d x_2 \wedge d x_3
+\end{eqnarray*}
+Therefore
+\begin{eqnarray*}
+  d \Omega & = & \frac{1}{2} d \left( \sum F_{i j} d x_i \wedge d x_j
+  \right)\\
+  & = & \frac{1}{2} \sum d F_{i j} \wedge d x_i \wedge d x_j\\
+  & = & \left( \frac{\partial E_1}{\partial x_2} - \frac{\partial
+  E_2}{\partial x_1} - \frac{\partial B_3}{\partial x_0} \right) d x_0 \wedge
+  d x_1 \wedge d x_2 + \left( \frac{\partial E_1}{\partial x_3} -
+  \frac{\partial E_3}{\partial x_1} + \frac{\partial B_2}{\partial x_0}
+  \right) d x_0 \wedge d x_1 \wedge d x_3 + \left( \frac{\partial
+  E_2}{\partial x_3} - \frac{\partial E_3}{\partial x_2} - \frac{\partial
+  B_1}{\partial x_0} \right) d x_0 \wedge d x_2 \wedge d x_3 + \left( -
+  \frac{\partial B_3}{\partial x_3} - \frac{\partial B_2}{\partial x_2} -
+  \frac{\partial B_1}{\partial x_1} \right) d x_1 \wedge d x_2 \wedge d x_3
+\end{eqnarray*}
+Because $d \Omega = 0$, thus we have
+\begin{eqnarray}
+  \left( \frac{\partial E_1}{\partial x_2} - \frac{\partial E_2}{\partial x_1}
+  - \frac{\partial B_3}{\partial x_0} \right) d x_0 d x_1 d x_2 & = & 0 
+  \label{eqnB3}\\
+  \left( \frac{\partial E_1}{\partial x_3} - \frac{\partial E_3}{\partial x_1}
+  + \frac{\partial B_2}{\partial x_0} \right) d x_0 d x_1 d x_3 & = & 0 
+  \label{eqnB2}\\
+  \left( \frac{\partial E_2}{\partial x_3} - \frac{\partial E_3}{\partial x_2}
+  - \frac{\partial B_1}{\partial x_0} \right) d x_0 d x_2 d x_3 & = & 0 
+  \label{eqnB1}
+\end{eqnarray}
+and
+\begin{equation}
+  \begin{array}{lll}
+    - \frac{\partial B_3}{\partial x_3} - \frac{\partial B_2}{\partial x_2} -
+    \frac{\partial B_1}{\partial x_1} & = & 0
+  \end{array} \Rightarrow \nabla \cdot B = 0
+\end{equation}
+Given $x_0 = t$, $-${\eqref{eqnB3}}$+${\eqref{eqnB2}}$-${\eqref{eqnB1}} is
+\begin{eqnarray}
+  \frac{\partial B}{\partial t} + \left|\begin{array}{ccc}
+    d x_0 d x_2 d x_3 & d x_0 d x_1 d x_3 & d x_0 d x_1 d x_2\\
+    \frac{\partial}{\partial x_1} & \frac{\partial}{\partial x_2} &
+    \frac{\partial}{\partial x_3}\\
+    E_1 & E_2 & E_3
+  \end{array}\right| & = & 0 \nonumber\\
+  \frac{\partial B}{\partial t} + \nabla \times E & = & 0 
+\end{eqnarray}
+Using $d^{\star} \Omega = 4 \pi J$, we have
+\begin{eqnarray}
+  \nabla \cdot E & = & 4 \pi \rho \\
+  \nabla \times B - \frac{\partial E}{\partial t} & = & 4 \pi j 
+\end{eqnarray}
+where $t = x_0, E = (E_1, E_2, E_3) \tmop{is} \tmop{the} \tmop{electric}
+\tmop{field}, B = (B_1, B_2, B_3) \tmop{is} \tmop{the} \tmop{magnetic}
+\tmop{field}, \rho \tmop{is} \tmop{the} \tmop{charge} \tmop{density}, j
+\tmop{is} \tmop{the} \tmop{current} \tmop{density}$. Moreover, $\rho d x_1
+\wedge d x_2 \wedge d x_3$ is the charge, $j_1 d x_2 d x_3 + j_2 d x_3 d x_1 +
+j_3 d x_1 d x_2$ is the electric flux $j \cdot d S$. $d x_0 \wedge (j \cdot d
+S)$ is the electric current through surface $d S$. Using $d^2 = 0$, we have $d
+J = 0$, which is the law of charge conservation, also known as continuity
+equation,
+\begin{eqnarray*}
+  d J & = & - d \rho d x_1 d x_2 d x_3 + d (d x_0 (j_1 d x_2 d x_3 + j_2 d x_3
+  d x_1 + j_3 d x_1 d x_2))\\
+  & = & - d \rho d x_1 d x_2 d x_3 + d (j_1 d x_0 d x_2 d x_3 + j_2 d x_0 d
+  x_3 d x_1 + j_3 d x_0 d x_1 d x_2)\\
+  & = & - \frac{\partial \rho}{\partial x_0} d x_0 d x_1 d x_2 d x_3 + d j_1
+  d x_0 d x_2 d x_3 - d j_2 d x_0 d x_1 d x_3 + d j_3 d x_0 d x_1 d x_2\\
+  & = & - \frac{\partial \rho}{\partial t} d x_0 d x_1 d x_2 d x_3 +
+  \frac{\partial j_1}{\partial x_1} d x_1 d x_0 d x_2 d x_3 - \frac{\partial
+  j_2}{\partial x_2} d x_2 d x_0 d x_1 d x_3 + \frac{\partial j_3}{\partial
+  x_3} d x_3 d x_0 d x_1 d x_2\\
+  & = & - \left( \frac{\partial \rho}{\partial t} + \frac{\partial
+  j_1}{\partial x_1} + \frac{\partial j_2}{\partial x_2} + \frac{\partial
+  j_3}{\partial x_3} \right) d x_0 d x_1 d x_2 d x_3\\
+  & = & - \left( \frac{\partial \rho}{\partial t} + \nabla \cdot j \right) d
+  x_0 d x_1 d x_2 d x_3
+\end{eqnarray*}
+Thus we have
+\[ \begin{array}{lll}
+     \frac{\partial \rho}{\partial t} + \nabla \cdot j & = & 0
+   \end{array} \]}}
+
+\subsection{Tangent Map}
+
+Let $F = (f_1, f_2, \ldots, f_m)$ be a mapping from $\mathbb{R}^n$ to
+$\mathbb{R}^m$. If $\mathbf{v}_p$ is a tangent vector to $\mathbb{R}^n$ at p,
+then
+\begin{equation}
+  F_{\ast} (\mathbf{v}) = (\mathbf{v} [f_1], \ldots, \mathbf{v} [f_m])
+  \tmop{at} F (p)
+\end{equation}
+If $\beta = F (\alpha (t))$ is the image of a curve $\alpha$ in
+$\mathbb{R}^n$, then $\beta' = F_{\ast} (\alpha')$.
+
+\subsection{Frame Fields}
+
+{\theorem*{If $\beta : I \rightarrow \mathbb{R}^3$ is a unit-speed curve with
+curvature $\kappa > 0$ and torsion $\tau$, then
+\begin{eqnarray}
+  \left(\begin{array}{c}
+    T'\\
+    N'\\
+    B'
+  \end{array}\right) & = & \left(\begin{array}{ccc}
+    0 & \kappa & 0\\
+    - \kappa & 0 & \tau\\
+    0 & - \tau & 0
+  \end{array}\right) \left(\begin{array}{c}
+    T\\
+    N\\
+    B
+  \end{array}\right) 
+\end{eqnarray}}}
+
+{\definition*{If $E_i$ is a frame on $\mathbb{R}^3, v \in T_p (\mathbb{R}^3)$,
+then $v = \sum v_i E_i$, define 1-form $\theta_i : T_p (\mathbb{R}^3)
+\rightarrow \mathbb{R}, \theta_i (v) = v_i$. $\theta_1, \theta_2, \theta_3$
+are the dual 1-forms of $E_1, E_2, E_3$. }}
+
+{\definition*{Attitude matrix $A$ connects two frame fields as
+\begin{equation}
+  E = A U
+\end{equation}
+where $A = [a_{i j}] \in \tmop{SO}_n$. }}
+
+{\definition*{Connection form $\omega$ is defined in
+\begin{equation}
+  \nabla_v E = \omega E
+\end{equation}}}
+
+Because $\nabla_v E_i = \sum^3_{j = 1} \omega_{i j} E_j$, we have
+\begin{eqnarray*}
+  \omega_{i j} & = & (\nabla_v E_i) \cdot E_j\\
+  & = & \left( \sum_{k = 1}^3 v [a_{i k}] U_k \right) \cdot \left( \sum_{l =
+  1}^3 a_{j l} U_l \right)\\
+  & = & \sum_{k = 1}^3 v [a_{i k}] a_{j k}\\
+  & = & \sum_{k = 1}^3 d a_{i k} (v) a_{j k}
+\end{eqnarray*}
+In matrix form, it's written as
+\begin{equation}
+  \omega = (d A) A^T
+\end{equation}
+$\omega$ is a skew symmetric matrix. Because
+\begin{eqnarray}
+  A A^T & = & I \nonumber\\
+  d (A A^T) & = & 0 \nonumber\\
+  (d A) A^T + A (d A^T) & = & 0 \nonumber\\
+  (d A) A^T + ((d A) A^T)^T & = & 0 \nonumber\\
+  (d A) A^T & = & - ((d A) A^T)^T \nonumber\\
+  \omega & = & - \omega^T 
+\end{eqnarray}
+{\example*{Find the connection form of the cylindrical frame field.
+\[ \left(\begin{array}{c}
+     E_1\\
+     E_2\\
+     E_3
+   \end{array}\right) = \left(\begin{array}{ccc}
+     \cos (\theta) & \sin (\theta) & 0\\
+     - \sin (\theta) & \cos (\theta) & 0\\
+     0 & 0 & 1
+   \end{array}\right) \left(\begin{array}{c}
+     U_1\\
+     U_2\\
+     U_3
+   \end{array}\right) \]
+So we have
+\[ A^T = \left(\begin{array}{ccc}
+     \cos (\theta) & - \sin (\theta) & 0\\
+     \sin (\theta) & \cos (\theta) & 0\\
+     0 & 0 & 1
+   \end{array}\right) \separatingspace{2 \tmop{em}} d A =
+   \left(\begin{array}{ccc}
+     - \sin (\theta) d \theta & \cos (\theta) d \theta & 0\\
+     - \cos (\theta) d \theta & - \sin (\theta) d \theta & 0\\
+     0 & 0 & 0
+   \end{array}\right) \]
+The connection form is
+\begin{equation}
+  \omega = (d A) A^T = \left(\begin{array}{ccc}
+    0 & d \theta & 0\\
+    - d \theta & 0 & 0\\
+    0 & 0 & 0
+  \end{array}\right)
+\end{equation}}}
+
+{\definition*{Denoting the vector space of all linear maps $f : V \rightarrow
+W$, where V,W are real vector spaces, the dual space of $V$ is $V^{\vee} =
+\tmop{Hom} (V, \mathbb{R})$.}}
+
+{\definition*{If $E_i$ is a frame field, then the dual 1-forms $\theta_i$ of
+the frame field are the 1-forms s.t.
+\begin{equation}
+  \theta_i (v) = v \cdot E_i = v_i
+\end{equation}
+for each tangent vector $v$ to $\mathbb{R}^3$ at $p$. It satisfies
+\begin{equation}
+  \theta_i (E_j) = E_i \cdot E_j = \delta_{i j}
+\end{equation}}}
+
+{\lemma*{Any 1-form $\phi$ on $\mathbb{R}^3$ in a frame field $E_i$ has a
+unique expression
+\begin{equation}
+  \label{eqndual} \phi = \sum \phi (E_i) \theta_i
+\end{equation}}}
+
+\begin{proof}
+  Apply to any tagent vector $v$,
+  \begin{eqnarray*}
+    \left( \sum \phi (E_i) \theta_i \right) (v) & = & \sum \phi (E_i) \theta_i
+    (v)\\
+    & = & \sum v_i \phi (E_i)\\
+    & = & \phi \left( \sum v_i E_i \right)\\
+    & = & \phi (v)
+  \end{eqnarray*}
+  Generally $\sum \phi (E_i) \theta_i = \phi$.
+\end{proof}
+
+{\example*{In particular, if we choose $E_i = U_i, \theta_i = d x_i$, then by
+(\ref{eqndual}),
+\begin{equation}
+  \label{eqnSpecDual} \phi = \sum \phi (U_i) d x_i
+\end{equation}
+for $E_i = \sum a_{i j} U_j$, the dual formulation is just $\theta_i = \sum
+a_{i j} d x_j$. This is because,
+\begin{eqnarray*}
+  \theta_i (U_j) & = & U_j \cdot E_i\\
+  & = & U_j \cdot \left( \sum a_{i k} U_k \right)\\
+  & = & \sum a_{i k} \delta_{k j}\\
+  & = & a_{i j}
+\end{eqnarray*}
+From $\left( \ref{eqnSpecDual} \right)$ we have
+\[ \begin{array}{lll}
+     \theta_i & = & \sum \theta_i (U_j) d x_j
+   \end{array} = \sum a_{i j} d x_j \]
+or in matrix form
+\begin{equation}
+  \label{eqnTh} \theta = A d \xi
+\end{equation}
+where $\theta = \left(\begin{array}{c}
+  \theta_1\\
+  \theta_2\\
+  \theta_3
+\end{array}\right), d \xi = \left(\begin{array}{c}
+  d x_1\\
+  d x_2\\
+  d x_3
+\end{array}\right)$.}}
+
+{\proposition*{The functions $\theta_1, \theta_2, \ldots, \theta_n$ form a
+basis for $V^{\vee}$. The basis $\theta_1, \theta_2, \ldots, \theta_n$ for
+$V^{\vee}$ is said to be dual to the basis $E_1, E_2, \ldots, E_n$ for $V$.}}
+
+{\theorem*{Cartan structural equations
+\begin{eqnarray}
+  d \theta_i & = & \sum_j \omega_{i j} \exterior \theta_j \\
+  d \omega_{i j} & = & \sum_k \omega_{i k} \exterior \omega_{k j} 
+\end{eqnarray}}}
+
+\begin{proof}
+  By $\left( \ref{eqnTh} \right)$, then
+  \begin{eqnarray*}
+    d \theta & = & d (A d \xi)\\
+    & = & (d A) \wedge (d \xi) + A d (d \xi)\\
+    & = & ((d A) A^T) (A d \xi)\\
+    & = & \omega \theta
+  \end{eqnarray*}
+  Use $\omega = (d A) A^T$, then
+  \begin{eqnarray*}
+    d \omega & = & d ((d A) A^T)\\
+    & = & d (A^T (d A))\\
+    & = & (d (A^T)) (d A)\\
+    & = & - (d A) (d (A^T))\\
+    & = & ((d A) A^T) (- A d (A^T))\\
+    & = & \omega (- \omega^T)\\
+    & = & \omega \omega
+  \end{eqnarray*}
+\end{proof}
+
+\section{Calculus on a Surface}
+
+\subsection{Differential Forms on a Surface}
+
+A 0-form $f$ on a surface $M$ is simply a differentiable real-valued function
+on $M$, and 1-form $\phi$ on $M$ is a real-valued function on tangent vectors
+to $M$ that is linear at each point. A 2-form $\eta$ on a surface $M$ is a
+real-valued function on all ordered pairs of tangent vectors $v, w$ to $M$
+such that
+\begin{enumeratenumeric}
+  \item $\eta (v, w)$ is linear in $v$ and in $w$;
+  
+  \item $\eta (v, w) = - \eta (w, v)$.
+\end{enumeratenumeric}
+According to the definition, $\eta (v, v) = 0$. The 2-form satisfies
+\begin{equation}
+  \eta (a\tmmathbf{v}+ b\tmmathbf{w}, c\tmmathbf{v}+ d\tmmathbf{w}) =
+  \left|\begin{array}{cc}
+    a & b\\
+    c & d
+  \end{array}\right| \eta (\tmmathbf{v}, \tmmathbf{w}) = (a d - b c) \eta
+  (\tmmathbf{v}, \tmmathbf{w})
+\end{equation}
+the wedge product of two 1-forms $\tmmathbf{\phi} \wedge \tmmathbf{\psi}$ is
+the 2-form on $M$ such that
+\[ (\tmmathbf{\phi} \wedge \tmmathbf{\psi}) (\tmmathbf{v}, \tmmathbf{w})
+   =\tmmathbf{\phi} (\tmmathbf{v}) \tmmathbf{\psi} (\tmmathbf{w})
+   -\tmmathbf{\phi} (\tmmathbf{\omega}) \tmmathbf{\psi} (\tmmathbf{\upsilon})
+\]
+for all pairs $\tmmathbf{v}, \tmmathbf{w}$ of tangent vectors to $M$. Let
+$r^1, r^2$ be standard coordinates on $\mathbb{R}^2$, and let $D$ be an open
+set in $\mathbb{R}^2$. If $\mathbf{x}: D \rightarrow M$ is a proper patch for
+a surface $M$ and $U = x (D)$, let $\mathbf{x}^{- 1} = (x^1, x^2) : U
+\rightarrow \mathbb{R}^2$, where $x^1, x^2$ are the two function components of
+$\mathbf{x}^{- 1}$ and we can write $x^i = r^i \circ \mathbf{x}^{- 1}$. We
+call $U$ a coordinate open set and $x^1, x^2$ coordinate functions on $U$.
+Define the tangent vectors $\partial / \partial x^i$ at $p =\mathbf{x} (u_0,
+v_0)$ by
+\[ \left. \frac{\partial}{\partial x^i} \right|_p =\mathbf{x}_{\ast} \left(
+   \left. \frac{\partial}{\partial r^i} \right|_{(u_0, v_0)} \right) \]
+where $\partial / \partial x^1 =\mathbf{x}_{\ast} (U_1) =\mathbf{x}_u, \quad
+\partial / \partial x^2 =\mathbf{x}_{\ast} (U_2) =\mathbf{x}_v$. The partial
+derivative of $f$ with respect to the coordinate $x^i$ can be calculated via
+bringing it back to $\mathbb{R}^2$:
+\begin{equation}
+  \frac{\partial}{\partial x^i} f = \left( \mathbf{x}_{\ast}
+  \frac{\partial}{\partial r^i} \right) (f) = \frac{\partial}{\partial r^i} (f
+  \circ \mathbf{x})
+\end{equation}
+The 1-forms $d x^1, d x^2$ are dual to the tangent vectors $\partial /
+\partial x^1, \partial / \partial x^2$ at every point of $U$. Therefore, every
+1-form $\phi$ on the surface $M$ is $\sum f_i d x^i$ on $U$ and every 2-form
+on the surface is $f d x^1 \wedge d x^2$ on $U$ for some functions $f_i$ and
+$f$ on $U$. The exterior derivative of a 1-form $\phi = \sum f_i d x^i$ is
+\begin{equation}
+  d \phi = \sum d f_i \wedge d x^i
+\end{equation}
+This definition depends on the choice of a coordinate patch $\mathbf{x}$, but
+it can be shown that it's in fact independent of coordinate patches.
+
+\subsection{Pullback and Pushforward}
+
+$F^{\ast} g$ is the function on $M$ such that
+\begin{equation}
+  F^{\ast} g = g \circ F
+\end{equation}
+If $\phi$ is a 1-form on $N$, $F^{\ast} \phi$ is the 1-form on $M$ such that
+\begin{equation}
+  (F^{\ast} \phi) (\tmmathbf{v}) = \phi (F_{\ast} \tmmathbf{v})
+\end{equation}
+If $\eta$ is a 2-form on $N$, let $F^{\ast} \eta$ be the 2-form on $M$ such
+that
+\begin{equation}
+  (F^{\ast} \eta) (\tmmathbf{v}, \tmmathbf{w}) = \eta (F_{\ast} \tmmathbf{v},
+  F_{\ast} \tmmathbf{w})
+\end{equation}
+Let $\tmmathbf{\xi}$ and $\tmmathbf{\eta}$ be forms on $N$, the pullback
+operation satisfies
+\begin{eqnarray*}
+  F^{\ast} (\tmmathbf{\xi}+\tmmathbf{\eta}) & = & F^{\ast} \tmmathbf{\xi}+
+  F^{\ast} \tmmathbf{\eta}\\
+  F^{\ast} (\tmmathbf{\xi} \wedge \tmmathbf{\eta}) & = & F^{\ast}
+  \tmmathbf{\xi} \wedge F^{\ast} \tmmathbf{\eta}\\
+  F^{\ast} (d\tmmathbf{\xi}) & = & d (F^{\ast} \tmmathbf{\xi})
+\end{eqnarray*}
+Let $F : M \rightarrow N$ be a mapping of surfaces. If $g$ is a 0-form on $N$,
+$F_{\ast} g$ is the function on $M$ such that
+\begin{equation}
+  F_{\ast} g = g \circ F^{- 1}
+\end{equation}
+\begin{proof}
+  Choose a point $p$ on $M$, then
+  \begin{eqnarray*}
+    F_{\ast} (g (p)) & = & g (p)\\
+    & = & g \circ F^{- 1} (F (p))\\
+    F_{\ast} g & = & g \circ F^{- 1}
+  \end{eqnarray*}
+  Further we have $F_{\ast} (g v) = g \circ F^{- 1} F_{\ast} (v)$. However, if
+  $g$ is a function on the curve $g = g (t)$, then $F_{\ast} g = g$.
+\end{proof}
+
+\subsection{Integration of Forms}
+
+Let $\phi$ be a 1-form on $M$, and let $\alpha : [a, b] \rightarrow M$ be a
+curve segment on a surface $M$. Then
+\begin{equation}
+  \int_{\alpha} \phi = \int_{[a, b]} \alpha^{\ast} \phi = \int^b_a \phi
+  (\alpha' (t)) d t
+\end{equation}
+Particularly we have
+\begin{equation}
+  \int_{\alpha} d f = f (\alpha (b)) - f (\alpha (a))
+\end{equation}
+{\example*{If $f = u v^2, \phi = d f = v^2 d u + 2 u v d v$, and $\alpha$ is
+the curve segment given by $\alpha (t) = (t, t^2)$, then we have
+\begin{eqnarray*}
+  \alpha' (t) & = & (1, 2 t)\\
+  \int_{\alpha} \phi & = & \int^b_a \phi (\alpha' (t)) d t\\
+  & = & \int^1_{- 1} (t^2)^2 d u (\alpha' (t)) + 2 t \ast t^2 d v (\alpha'
+  (t)) d t\\
+  & = & \int^1_{- 1} (t^4 \ast 1 + 2 t \ast t^2 \ast 2 t) d t\\
+  & = & \int^1_{- 1} (5 t^4 ) d t\\
+  & = & \nobracket t^5 |^1_{- 1}\\
+  & = & 2\\
+  & = & f (\alpha (1)) - f (\alpha (- 1))
+\end{eqnarray*}}}
+
+Let $\eta$ be a 2-form on $M$, and let $\mathbf{x}: [a, b] \times [c, d]
+\rightarrow M$ be a 2-segment (differentiable but need not be 1-1 or regular)
+on a surface $M$. Then
+\begin{equation}
+  \int_{\mathbf{x}} \eta = \int \int_R \mathbf{x}^{\ast} \eta = \int^b_a
+  \int^d_c \eta (\mathbf{x}_u, \mathbf{x}_v) d t
+\end{equation}
+{\theorem*{{\dueto{Stokes' theorem}}If $\phi$ is a 1-form on $M$, and
+$\mathbf{x}: [a, b] \times [c, d] \rightarrow M$ is a 2-segment,
+\begin{equation}
+  \int_{\mathbf{x}} d \phi = \int_{\partial \mathbf{x}} \phi
+\end{equation}
+where $\int_{\partial \mathbf{x}} \phi = \int_{\alpha} \phi + \int_{\beta}
+\phi - \int_{\gamma} \phi - \int_{\delta} \phi$.}}
+
+By convention, if $k \neq k'$, the integral of a $k - \tmop{dimensional}$ form
+on a $k' - \tmop{dimensional}$ surface is understood to be zero
+{\cite{tao2007differential}}.
+
+It should be noted that
+\begin{equation}
+  \bigiint_A f d x \wedge d y = \bigiint_A f d x d y = \bigiint_A f d y d x =
+  - \bigiint_A f d y \wedge d x
+\end{equation}
+
+\subsection{Topological Properties of Surfaces}
+
+{\definition*{$M$ is path-connected if any two points on $M$ can be joined by
+a path.}}
+
+{\definition*{$M$ is compact if every open cover of $M$ has a finite
+subcover.}}
+
+{\example*{An open cover $\left\{ \left( \frac{1}{n}, 1 \right)
+\right\}^{\infty}_{n = 2}$ does not have a finite subcover. So $(0, 1)$ is not
+compact.}}
+
+{\theorem*{A subset of $\mathbb{R}^n$ is compact iff it's closed and
+bounded.}}
+
+{\example*{A sphere is closed and bounded, so it's compact.}}
+
+{\theorem*{A continuous function on a compact space attains a maximum and a
+minimum.}}
+
+{\example*{A Cylinder $S^1 \times (- 1, 1)$ is not compact, so there is no
+maximum.}}
+
+{\definition*{A surface is orientable if there is a 2-form $\eta$ on $M$
+that's never 0 at any point.}}
+
+{\proposition*{A surface $M$ is orientable iff it has a continuous unit normal
+vector field.}}
+
+\begin{proof}
+  Let $U (p)$ be a continuous unit normal vector field for $p \in M$. Define
+  $\phi_p (v, w) = U_p \cdot (v \times w) = \det [U_p, v, w]$ is bilinear in
+  $v, w$ and alternating. If $v, w$ are independent, then $U_p, v, w$ are
+  independent and $\phi_p (v, w) \neq 0$.
+\end{proof}
+
+\section{Shape Operators}
+
+\subsection{Shape Operators of a Surface}
+
+{\definition*{If $\mathbf{p}$ is a point of $M$, then for each tangent vector
+$\mathbf{v}$ to $M$ at $\mathbf{p}$, let
+\[ S_p (\mathbf{v}) = - \nabla_{\mathbf{v}} U \]
+where U is a unit normal vector field on a neighborhood of $\mathbf{p}$ in
+$M$. $S_p$ is called the shape operator of $M$ at $\mathbf{p}$ derived from
+$U$.}}
+
+{\lemma*{For each point $\mathbf{p}$ of $M \subset \mathbb{R}^3$, the shape
+operator is a linear operator
+\[ S_p : T_p (M) \rightarrow T_p (M) \]
+on the tangent plane of $M$ at $\mathbf{p}$.}}
+
+\begin{proof}
+  Use $U \cdot U = 1$, and differentiate both sides, we have
+  \[ 0 =\mathbf{v} [U \cdot U] = 2 (\nabla_{\mathbf{v}} U) \cdot U = - 2 S_p
+     (\mathbf{v}) \cdot U \]
+  Thus $S_p (\mathbf{v}) \in T_p (M)$.
+\end{proof}
+
+{\example*{Given a sphere $x^2 + y^2 + z^2 = r^2$, we have
+\[ U = \frac{1}{r} \left(\begin{array}{c}
+     x\\
+     y\\
+     z
+   \end{array}\right), \applicationspace{2 \tmop{em}} \nabla_{\mathbf{v}} U =
+   \frac{1}{r} \left(\begin{array}{c}
+     \mathbf{v} [x]\\
+     \mathbf{v} [y]\\
+     \mathbf{v} [z]
+   \end{array}\right) = \frac{1}{r} \left(\begin{array}{c}
+     \mathbf{v}_1\\
+     \mathbf{v}_2\\
+     \mathbf{v}_3
+   \end{array}\right) = \frac{1}{r} \mathbf{v} \]
+Let $\mathbf{v}= \sum \mathbf{v}_i U_i = \sum \mathbf{v}_i
+\frac{\partial}{\partial x_i}$, then
+\begin{equation}
+  S_p (\mathbf{v}) = - \nabla_{\mathbf{v}} U = - \frac{1}{r} \mathbf{v}
+\end{equation}
+This is represented by $\left(\begin{array}{cc}
+  - \frac{1}{r} & 0\\
+  0 & - \frac{1}{r}
+\end{array}\right)$.}}
+
+{\example*{For a plane $S_p (\mathbf{v}) = - \nabla_{\mathbf{v}} U = 0$,
+because $U$ is constant, it is represented by $\left(\begin{array}{cc}
+  0 & 0\\
+  0 & 0
+\end{array}\right)$.}}
+
+{\example*{Given a cylinder $x^2 + y^2 = 1$, we have $U = \frac{1}{r}
+\left(\begin{array}{c}
+  x\\
+  y\\
+  0
+\end{array}\right)$.
+\[ S_p (\mathbf{v}) = - \nabla_{\mathbf{v}} U = - \frac{1}{r}
+   \left(\begin{array}{c}
+     x\\
+     y\\
+     0
+   \end{array}\right) \]
+A basis for $T_p (M)$ is $\left\{ \frac{\partial}{\partial z},
+\frac{\partial}{\partial \theta} \right\}$, where $\frac{\partial}{\partial z}
+= \left(\begin{array}{c}
+  0\\
+  0\\
+  1
+\end{array}\right), \frac{\partial}{\partial \theta} = \frac{1}{r}
+\left(\begin{array}{c}
+  - y\\
+  x\\
+  0
+\end{array}\right)$, then
+\[ S_p \left( \frac{\partial}{\partial z} \right) = 0, \applicationspace{1
+   \tmop{em}} S_p \left( \frac{\partial}{\partial \theta} \right) = -
+   \frac{1}{r} \left(\begin{array}{c}
+     - \frac{y}{r}\\
+     \frac{x}{r}\\
+     0
+   \end{array}\right) = - \frac{1}{r} \left( \frac{\partial}{\partial \theta}
+   \right) \]
+This is the matrix $\left(\begin{array}{cc}
+  0 & 0\\
+  0 & - \frac{1}{r}
+\end{array}\right)$.}}
+
+{\theorem*{Relative to any orthonormal basis of $T_p (M)$, $S_p$ is
+represented by a $2 \times 2$ symmetric matrix.}}
+
+\begin{proof}
+  If $e_1, e_2$ is a basis for $T_p (M)$, then let
+  \[ \left(\begin{array}{c}
+       S_p (e_1)\\
+       S_p (e_2)
+     \end{array}\right) = \left(\begin{array}{cc}
+       a & d\\
+       b & c
+     \end{array}\right)^T \left(\begin{array}{c}
+       e_1\\
+       e_2
+     \end{array}\right) \]
+  Consider that the basis $x_u, x_v$ is tangent to $M$, so $U \cdot x_u = 0$.
+  Differentiate with respect to $v$,
+  \begin{eqnarray*}
+    \frac{\partial U}{\partial v} \cdot x_u + U \cdot \frac{\partial
+    x_u}{\partial v} & = & 0\\
+    \left( \left. \frac{d}{d v} \right|_{v = v_0} U (x (u_0, v))_{} \right)
+    \cdot x_u + U \cdot x_{u v} & = & 0\\
+    \nabla_{x_v} U \cdot x_u + U \cdot x_{u v} & = & 0\\
+    - S_p (x_v) \cdot x_u + U \cdot x_{u v} & = & 0
+  \end{eqnarray*}
+  Further we have
+  \begin{equation}
+    S_p (x_v) \cdot x_u = U \cdot x_{u v} = U \cdot x_{v u} = S_p (x_u) \cdot
+    x_v
+  \end{equation}
+  \begin{enumeratenumeric}
+    \item Dot product is the first foundamental bilinear form;
+    
+    \item $S_p (x_v) \cdot x_u$ is the second foundamental bilinear form.
+  \end{enumeratenumeric}
+  Now suppose
+  \[ e_1 = f x_u + g x_v \separatingspace{1 \tmop{em}} e_2 = h x_u + j x_v \]
+  is any orthonormal basis. Then
+  \begin{eqnarray*}
+    b & = & S (e_1) \cdot e_2\\
+    & = & S (f x_u + g x_v) \cdot (h x_u + j x_v)\\
+    & = & f h S (x_u) \cdot x_u + g j S (x_v) \cdot x_v + (f j + g h) S (x_u)
+    \cdot x_v\\
+    & = & S (e_2) \cdot e_1\\
+    & = & d
+  \end{eqnarray*}
+  Thus, $S_p$ is represented by a $2 \times 2$ symmetric matrix.
+\end{proof}
+
+{\theorem*{The eigenvectors of a symmetric matrix $A$ corresponding to two
+distinct eigenvalues $\lambda_1, \lambda_2$ are orthogonal.}}
+
+\begin{proof}
+  We know $A v_1 = \lambda_1 v_1, A v_2 = \lambda_2 v_2$, and $A = A^T$, then
+  \begin{eqnarray*}
+    (\lambda_1 v_1) \cdot v_2 & = & (A v_1) \cdot v_2\\
+    & = & (A v_1)^T v_2\\
+    & = & v^T_1 A^T v_2\\
+    & = & v^T_1 (A v_2)\\
+    & = & \lambda_2 v^T_1 v_2\\
+    & = & \lambda_2 v_1 \cdot v_2\\
+    (\lambda_1 - \lambda_2) v_1 \cdot v_2 & = & 0
+  \end{eqnarray*}
+  Since $\lambda_1 - \lambda_2 \neq 0$, then $v_1 \cdot v_2 = 0$, which means
+  two eigenvectors are orthogonal.
+\end{proof}
+
+\subsection{Normal Curvature}
+
+{\definition*{Let $M$ be a surface with unit normal vector field $U$, and let
+$\mathbf{p} \in M, u \in T_p (M), \tmop{and} \| u \| = 1$, then the normal
+curvature is
+\begin{equation}
+  k (u) = \alpha'' (s) \cdot U
+\end{equation}
+where $\alpha (s)$ is a curve parameterized by arclength with $\alpha (0)
+=\mathbf{p}, \alpha' (0) = u$.}}
+
+Because $\alpha' (s)$ is tangent to $M$, $\alpha' (s) \cdot U_{\alpha (s)} =
+0$. Differentiate with respect to s:
+\begin{eqnarray*}
+  \alpha'' (s) \cdot U_{\alpha (s)} + \alpha' (s) \cdot \frac{d}{d s}
+  U_{\alpha (s)} & = & 0
+\end{eqnarray*}
+Evaluate at $s = 0$, we have
+\begin{eqnarray}
+  \alpha'' (0) \cdot U_{\alpha (0)} & = & - \alpha' (0) \cdot \left.
+  \frac{d}{d s} \right|_{s = 0} U_{\alpha (s)} \nonumber\\
+  \alpha'' (0) \cdot U_{\alpha (0)} & = & - \alpha' (0) \cdot \nabla_{\alpha'
+  (0)} U \nonumber\\
+  \alpha'' (0) \cdot U_{\alpha (0)} & = & u \cdot S_p (U) 
+\end{eqnarray}
+which is the normal curvature at $\mathbf{p}$ in the direction $u$. Suppose $u
+= \left(\begin{array}{c}
+  x\\
+  y
+\end{array}\right),$ and $x^2 + y^2 = 1$, and $S_p = \left(\begin{array}{cc}
+  a & b\\
+  b & c
+\end{array}\right)$ relates to the same basis and it's symmetric. The normal
+curvature is
+\begin{eqnarray*}
+  k (u) & = & u \cdot S_p (u)\\
+  & = & \left(\begin{array}{c}
+    x\\
+    y
+  \end{array}\right) \cdot \left(\begin{array}{cc}
+    a & b\\
+    b & c
+  \end{array}\right) \left(\begin{array}{c}
+    x\\
+    y
+  \end{array}\right)\\
+  & = & a x^2 + 2 b x y + c y^2
+\end{eqnarray*}
+By lagrange, the max and the min occur when
+\begin{eqnarray*}
+  \nabla k & = & \lambda_1 \nabla g\\
+  \left(\begin{array}{c}
+    2 a x + 2 b y\\
+    2 b x + 2 c y
+  \end{array}\right) & = & \lambda_1 \left(\begin{array}{c}
+    x\\
+    y
+  \end{array}\right)\\
+  \left(\begin{array}{cc}
+    a & b\\
+    b & c
+  \end{array}\right) \left(\begin{array}{c}
+    x\\
+    y
+  \end{array}\right) & = & \lambda \left(\begin{array}{c}
+    x\\
+    y
+  \end{array}\right)
+\end{eqnarray*}
+The max and the min occur at the 2 eigenvectors
+\[ k (x, y) = \left(\begin{array}{cc}
+     a & b\\
+     b & c
+   \end{array}\right) \left(\begin{array}{c}
+     x\\
+     y
+   \end{array}\right) \cdot \left(\begin{array}{c}
+     x\\
+     y
+   \end{array}\right) = \lambda \left(\begin{array}{c}
+     x\\
+     y
+   \end{array}\right) \cdot \left(\begin{array}{c}
+     x\\
+     y
+   \end{array}\right) = \lambda (x^2 + y^2) = \lambda \]
+The max and the min normal curvature are the eigenvalues of $S_p$.
+
+{\definition*{Gauss curvature $K (p) = \det (S_p) = \lambda_1 \lambda_2$.}}
+
+{\definition*{Mean curvature $H (p) = \frac{1}{2} (\lambda_1 + \lambda_2) =
+\frac{1}{2} \tmop{tr} (S_p)$.}}
+
+{\definition*{Principal curvatures are $\lambda_1, \lambda_2$; principal
+directions are the orthogonal eigenvectors. They are orthogonal because $S_p$
+is symmetric.}}
+
+{\example*{Let $(x_p, y_p, z_p)$ be any point $\mathbf{p}$ of a surface
+function $z = f (x, y)$, then the tangent plane is
+\begin{equation}
+  z = f (x_p, y_p) + f_x (x_p, y_p) (x - x_p) + f_y (x_p, y_p) (y - y_p)
+\end{equation}
+The unit normal vector is
+\begin{equation}
+  U = \pm \left. \frac{1}{\sqrt{1 + f^2_x + f^2_y}} \left(\begin{array}{c}
+    - f_x\\
+    - f_y\\
+    1
+  \end{array}\right) \right|_{(x_p, y_p)}
+\end{equation}
+The unit normal vector to a plane specified by
+\[ F (x, y, z) = 0 \]
+is given by
+\[ U = \pm \frac{\nabla F}{\sqrt{F^2_x + F^2_y + F^2_z}} \]
+Specifically for $F (x, y, z) = a x + b y + c z + d$, we have $U = \pm \nabla
+f = \pm \frac{1}{\sqrt{a^2 + b^2 + c^2}} \left(\begin{array}{c}
+  a\\
+  b\\
+  c
+\end{array}\right)$.}}
+
+\section{Geometry of Surfaces in $\mathbb{R}^3$}
+
+\subsection{Structural Equations for Surfaces}
+
+{\definition*{An adapted frame field on $M$ is a triple of orthonormal
+Euclidean vector field $(E_1, E_2, E_3)$ on surface $M$ such that $E_3$ is
+normal to $M$, and so $E_1, E_2$ are tangent to $M$.}}
+
+When we restrict the structural equations to surface $M$, for all $v \in T_p
+(M)$,
+\[ \theta_3 (v) = v \cdot E_3 = 0 \]
+The first structural equation becomes
+\begin{equation}
+  \left(\begin{array}{c}
+    d \theta_1\\
+    d \theta_2\\
+    0
+  \end{array}\right) = \left(\begin{array}{ccc}
+    0 & \omega_{12} & \omega_{13}\\
+    \omega_{21} & 0 & \omega_{23}\\
+    \omega_{31} & \omega_{32} & 0
+  \end{array}\right) \left(\begin{array}{c}
+    \theta_1\\
+    \theta_2\\
+    0
+  \end{array}\right)
+\end{equation}
+Further simplification generates
+\begin{eqnarray}
+  d \theta_1 & = & \omega_{12} \theta_2 \\
+  d \theta_2 & = & \omega_{21} \theta_1 \\
+  \omega_{31} \exterior \theta_1 + \omega_{32} \exterior \theta_2 & = & 0 
+\end{eqnarray}
+The second structural equation becomes
+\begin{eqnarray}
+  d \omega_{12} & = & \omega_{13} \exterior \omega_{32} \\
+  d \omega_{13} & = & \omega_{12} \exterior \omega_{23} \\
+  d \omega_{23} & = & \omega_{21} \exterior \omega_{13} 
+\end{eqnarray}
+The shape operator here is
+\begin{eqnarray*}
+  \nabla_v E_3 & = & \omega_{31} (v) E_1 + \omega_{32} (v) E_2 + \omega_{33}
+  (v) E_3\\
+  S (v) & = & - \nabla_v E_3\\
+  & = & \omega_{13} (v) E_1 + \omega_{23} (v) E_2
+\end{eqnarray*}
+Relative to $E_1, E_2$, then
+\begin{eqnarray*}
+  S (E_1) & = & \omega_{13} (E_1) E_1 + \omega_{23} (E_1) E_2\\
+  S (E_2) & = & \omega_{13} (E_2) E_1 + \omega_{23} (E_2) E_2
+\end{eqnarray*}
+Matrix representation of $S$ is
+\[ S = \left(\begin{array}{cc}
+     \omega_{13} (E_1) & \omega_{13} (E_2)\\
+     \omega_{23} (E_1) & \omega_{23} (E_2)
+   \end{array}\right) \]
+Gaussian curvature is
+\begin{eqnarray*}
+  K & = & | S |\\
+  & = & \omega_{13} (E_1) \omega_{23} (E_2) - \omega_{13} (E_2) \omega_{23}
+  (E_1)\\
+  & = & (\omega_{13} \exterior \omega_{23}) (E_1, E_2)\\
+  & = & - d \omega_{12} (E_1, E_2)
+\end{eqnarray*}
+Since $\omega_{13} \exterior \omega_{23}$ is a 2-form, and $\theta_1 \exterior
+\theta_2$ is a 2-form on $M$ as well, then suppose $\omega_{13} \exterior
+\omega_{23} = f \theta_1 \exterior \theta_2$, and apply both sides to $E_1,
+E_2$,
+\begin{eqnarray*}
+  \omega_{13} \exterior \omega_{23} (E_1, E_2) & = & f \theta_1 \exterior
+  \theta_2 (E_1, E_2)\\
+  K & = & f
+\end{eqnarray*}
+Therefore,
+\begin{equation}
+  \label{eqnG} \omega_{13} \exterior \omega_{23} = K \theta_1 \exterior
+  \theta_2 = - d \omega_{12}
+\end{equation}
+For the mean curvature, use
+\begin{eqnarray*}
+  2 H & = & \omega_{13} (E_1) + \omega_{23} (E_2)\\
+  & = & \omega_{13} (E_1) \theta_2 (E_2) - \omega_{13} (E_2) \theta_2 (E_1) +
+  \theta_1 (E_1) \omega_{23} (E_2) - \theta_1 (E_2) \omega_{23} (E_1)\\
+  & = & (\omega_{13} \exterior \theta_2 + \theta_1 \exterior \omega_{23})
+  (E_1, E_2)
+\end{eqnarray*}
+Suppose $\omega_{13} \exterior \theta_2 + \theta_1 \exterior \omega_{23} = f
+\theta_1 \exterior \theta_2$, and apply both sides to $E_1, E_2$, then $f = 2
+H$. And
+\begin{eqnarray}
+  \omega_{13} \exterior \theta_2 + \theta_1 \exterior \omega_{23} & = & 2 H
+  \theta_1 \exterior \theta_2 
+\end{eqnarray}
+{\example*{Let $M$ be a sphere of radius $\rho$, then $x = \rho \cos \phi \cos
+\theta, y = \rho \cos \phi \sin \theta, z = \rho \sin \phi$, therefore
+\[ \begin{array}{lll}
+     \frac{\partial}{\partial \phi} & = & \left(\begin{array}{c}
+       - \rho \sin \phi \cos \theta\\
+       - \rho \sin \phi \sin \theta\\
+       \rho \cos \phi
+     \end{array}\right)
+   \end{array} \separatingspace{2 \tmop{em}} \begin{array}{lll}
+     \frac{\partial}{\partial \theta} & = & \left(\begin{array}{c}
+       - \rho \cos \phi \sin \theta\\
+       \rho \cos \phi \cos \theta\\
+       0
+     \end{array}\right)
+   \end{array} \]
+Choosing the adapted frame as $E_1 = \frac{1}{\rho} \frac{\partial}{\partial
+\phi}, E_2 = \frac{1}{\rho \cos \phi} \frac{\partial}{\partial \theta}$, the
+dual forms are $\theta_1 = \rho d \phi, \theta_2 = \rho \cos \phi d \theta$.
+Let $\omega_{12} = a d \phi + b d \theta$. Here $\rho$ is constant, and
+$\theta, \phi$ are functions. The first structural equation gives
+\begin{eqnarray*}
+  d \theta_1 & = & \omega_{12} \theta_2\\
+  0 & = & (a d \phi + b d \theta) \rho \cos \phi d \theta\\
+  0 & = & a \rho \cos \phi d \phi \exterior d \theta\\
+  a & = & 0
+\end{eqnarray*}
+use another first structural equation
+\begin{eqnarray*}
+  d \theta_2 & = & - \omega_{12} \theta_1\\
+  - \rho \sin \phi d \phi \exterior d \theta & = & - (a d \phi + b d \theta)
+  \rho d \phi\\
+  - \rho \sin \phi d \phi \exterior d \theta & = & b \rho d \phi \exterior d
+  \theta\\
+  b & = & - \sin \phi
+\end{eqnarray*}
+Thus $\omega_{12} = - \sin \phi d \theta$, to calculate the Gaussian curvature
+via $\left( \ref{eqnG} \right)$,
+\begin{equation}
+  K = - \frac{d \omega_{12}}{\theta_1 \exterior \theta_2} = - \frac{- \cos
+  \phi d \phi \exterior d \theta}{(\rho d \phi) \exterior (\rho \cos \phi d
+  \theta)} = \frac{1}{\rho^2}
+\end{equation}}}
+
+\subsection{Isometries}
+
+The intrinsic distance between $p$ and $q$ on surface $M$ is
+\begin{equation}
+  \rho (p, q) \assign \inf L (\alpha) = \inf \int^b_a \| \alpha' (t) \| d t
+\end{equation}
+An isometry $f : M \rightarrow \bar{M}$ is a bijective differentiable map such
+that
+\[ (f_{\ast} v) \cdot (f_{\ast} w) = v \cdot w \]
+for all $v, w \in T_p (M)$. TFAE:
+\begin{enumeratenumeric}
+  \item $(f_{\ast} v) \cdot (f_{\ast} w) = v \cdot w$;
+  
+  \item $\| f (v) \| = \| v \|$;
+  
+  \item $f$ preserves orthonormal basis
+\end{enumeratenumeric}
+A map $f : M \rightarrow \bar{M}$ is a local isometry if it preserves the dot
+product.
+
+{\definition*{A property of a surface that is invariant under isometries is
+intrinsic.}}
+
+{\theorem*{Gaussian curvature $K$ is intrinsic.}}
+
+\begin{proof}
+  1st structional equation on $\bar{M}$:
+  \[ d \overline{\theta_1} = \overline{\omega_{12}} \wedge
+     \overline{\theta_2}, \applicationspace{1 \tmop{em}} d \overline{\theta_2}
+     = \overline{\omega_{21}} \wedge \overline{\theta_1} \]
+  Take $F^{\ast}$ for both sides,
+  \begin{eqnarray*}
+    F^{\ast} d \overline{\theta_1} & = & F^{\ast} (\overline{\omega_{12}}
+    \wedge \overline{\theta_2})\\
+    d F^{\ast} \overline{\theta_1} & = & F^{\ast} \overline{\omega_{12}}
+    \wedge F^{\ast} \overline{\theta_2}\\
+    d \theta_1 & = & F^{\ast} \overline{\omega_{12}} \wedge \theta_2
+  \end{eqnarray*}
+  Similarly we have
+  \[ \begin{array}{lll}
+       d \theta_2 & = & F^{\ast} \overline{\omega_{21}} \wedge \theta_1
+     \end{array} \]
+  By Cartan's lemma, $F^{\ast} \overline{\omega_{12}} = \omega_{12}$. Use
+  Gauss's equation on $\bar{M}$,
+  \begin{eqnarray*}
+    d \overline{\omega_{12}} & = & - \bar{K} \overline{\theta_1} \wedge
+    \overline{\theta_2}\\
+    F^{\ast} d \overline{\omega_{12}} & = & - F^{\ast} \bar{K} F^{\ast}
+    \overline{\theta_1} \wedge F^{\ast} \overline{\theta_2}\\
+    d F^{\ast} \overline{\omega_{12}} & = & - F^{\ast} \bar{K} \theta_1 \wedge
+    \theta_2\\
+    d \omega_{12} & = & - \bar{K} \circ F \theta_1 \wedge \theta_2
+  \end{eqnarray*}
+  Therefore
+  \begin{eqnarray*}
+    K & = & \bar{K} \circ F
+  \end{eqnarray*}
+  At any point $p \in M$,
+  \begin{eqnarray*}
+    K (p) & = & \bar{K} \circ F (p)\\
+    K (p) & = & \bar{K} (F (p))
+  \end{eqnarray*}
+  The Gaussian curvature $K$ at $p$ is the same as $\bar{K}$ at $F (p)$.
+\end{proof}
+
+{\definition*{A mapping of surfaces $F : M \rightarrow N$ is conformal
+provided there exists a real-valued function $\lambda > 0$ on $M$ such that
+\begin{equation}
+  \| F_{\ast} (v_p) \| = \lambda (p) \| v_p \|
+\end{equation}
+for all tangent vectors to $M$. The function $\lambda$ is called the scale
+factor of $F$. A conformal mapping preserves angles. When $\lambda = 1$, $F$
+is a local isometry.}}
+
+\section{Riemannian Geometry}
+
+\subsection{Geometric Surfaces}
+
+{\definition*{An inner product on a vector space $V$ is a function $<, > : V
+\times V \rightarrow \mathbb{R}$ that has these 3 properties: bilinearity;
+symmetry; postive definitness.}}
+
+{\example*{Conformal change $< v, w > = \frac{v \cdot w}{h^2}$.}}
+
+{\definition*{A geometric surface is a surface $M$ with an inner product on
+$T_p (M)$ for each $p \in M$ s.t. if $X, Y$ are differentiable vector fields
+on $M$, then $< X, Y >$ is a differentiable function.}}
+
+{\definition*{A frame field on a geometric surface is a pair of orthonormal
+vector field $E_1, E_2$. Their dual 1-forms $\theta_1, \theta_2$ are 1-forms
+on $M$ s.t. $\theta_i (E_j) = \delta_{i j}$, or $\theta_i (v) = < v, E_i >$.}}
+
+Let $\overline{E_1}, \overline{E_2}$ be another frame field on $M$, and
+\begin{eqnarray}
+  \left(\begin{array}{cc}
+    \overline{E_1} & \overline{E_2}
+  \end{array}\right) & = & \left(\begin{array}{cc}
+    E_1 & E_2
+  \end{array}\right) \left(\begin{array}{cc}
+    a_{11} & a_{12}\\
+    a_{21} & a_{22}
+  \end{array}\right) \nonumber\\
+  \bar{E} & = & E A \nonumber\\
+  \bar{\theta} \bar{E} & = & \left(\begin{array}{c}
+    \overline{\theta_1}\\
+    \overline{\theta_2}
+  \end{array}\right) \left(\begin{array}{cc}
+    \overline{E_1} & \overline{E_2}
+  \end{array}\right) \nonumber\\
+  & = & I \nonumber\\
+  \left(\begin{array}{c}
+    \overline{\theta_1}\\
+    \overline{\theta_2}
+  \end{array}\right) & = & \left(\begin{array}{cc}
+    b_{11} & b_{12}\\
+    b_{21} & b_{22}
+  \end{array}\right) \left(\begin{array}{c}
+    \theta_1\\
+    \theta_2
+  \end{array}\right) \nonumber\\
+  \bar{\theta} & = & B \theta \nonumber\\
+  \bar{\theta} \bar{E} & = & B \theta E A \nonumber\\
+  & = & B A \nonumber\\
+  & = & I \nonumber\\
+  B & = & A^{- 1} \nonumber\\
+  & = & A^T 
+\end{eqnarray}
+The relation between $\bar{\omega} \tmop{and} \omega$:
+\begin{eqnarray}
+  d \bar{\theta} & = & d (B \theta) \nonumber\\
+  & = & (d B) \theta + B d \theta \nonumber\\
+  & = & (d B) B^{- 1} \bar{\theta} + B \omega \theta \nonumber\\
+  & = & (d B B^{- 1} + B \omega B^{- 1}) \bar{\theta} \nonumber\\
+  \bar{\omega} & = & d B B^{- 1} + B \omega B^{- 1} \nonumber\\
+  & = & (d A^T) A + A^T \omega A \nonumber\\
+  & = & \omega + A^T \omega A 
+\end{eqnarray}
+The area form is
+\begin{eqnarray*}
+  \overline{\theta_1} \wedge \overline{\theta_2} & = & (b_{11} \theta_1 +
+  b_{12} \theta_2) \wedge (b_{21} \theta_1 + b_{22} \theta_2)\\
+  & = & (b_{11} b_{22} - b_{12} b_{21}) \theta_1 \wedge \theta_2\\
+  & = & (\det B) \theta_1 \wedge \theta_2\\
+  & = & (\det A^T) \theta_1 \wedge \theta_2\\
+  & = & (\det A) \theta_1 \wedge \theta_2\\
+  \overline{\theta_1} \wedge \overline{\theta_2} & = & \pm \theta_1 \wedge
+  \theta_2
+\end{eqnarray*}
+\begin{enumeratenumeric}
+  \item If $\overline{E_1}, \overline{E_2}$ has the same orientation as $E_1,
+  E_2$,
+  \begin{eqnarray}
+    A & = & \left(\begin{array}{cc}
+      \cos \varphi & - \sin \varphi\\
+      \sin \varphi & \cos \varphi
+    \end{array}\right) \nonumber\\
+    \omega & = & (d A^T) A \nonumber\\
+    & = & \left(\begin{array}{cc}
+      0 & 1\\
+      - 1 & 0
+    \end{array}\right) d \varphi \nonumber\\
+    A^T \omega A & = & \left(\begin{array}{cc}
+      0 & 1\\
+      - 1 & 0
+    \end{array}\right) \omega_{12} \nonumber\\
+    \bar{\omega} & = & \left(\begin{array}{cc}
+      0 & 1\\
+      - 1 & 0
+    \end{array}\right) \overline{\omega_{12}} \nonumber\\
+    & = & \left(\begin{array}{cc}
+      0 & 1\\
+      - 1 & 0
+    \end{array}\right) (\omega_{12} + d \varphi) \nonumber\\
+    \overline{\omega_{12}} & = & \omega_{12} + d \varphi \\
+    d \overline{\omega_{12}} & = & d \omega_{12} \nonumber\\
+    \overline{\theta_1} \wedge \overline{\theta_2} & = & \theta_1 \wedge
+    \theta_2 \nonumber\\
+    \bar{K} & = & K \nonumber
+  \end{eqnarray}
+  \item Similarly if $\overline{E_1}, \overline{E_2}$ has the opposite
+  orientation as $E_1, E_2$,
+  \begin{eqnarray}
+    A & = & \left(\begin{array}{cc}
+      \cos \varphi & \sin \varphi\\
+      - \sin \varphi & - \cos \varphi
+    \end{array}\right) \nonumber\\
+    \overline{\omega_{12}} & = & - (\omega_{12} + d \varphi) \\
+    d \overline{\omega_{12}} & = & - d \omega_{12} \nonumber\\
+    \overline{\theta_1} \wedge \overline{\theta_2} & = & - \theta_1 \wedge
+    \theta_2 \nonumber\\
+    \bar{K} & = & K \nonumber
+  \end{eqnarray}
+\end{enumeratenumeric}
+$K$ is independent of the choice of frame fields, it's defined as the Gaussian
+curvature of the geometric surface.
+
+{\example*{Poincare half-plane
+\[ \mathbb{H}^2 = \{ (x, y) \in \mathbb{R}^2 \nobracket | y > 0 \} \quad
+   \tmop{with} \quad < v, w >_{(x, y)} = \frac{v \cdot w}{y^2} \]
+where $v, w \in T_{(x, y)} (\mathbb{H}^2) \simeq \mathbb{R}^2$.
+\begin{eqnarray*}
+  < \frac{\partial}{\partial x}, \frac{\partial}{\partial x} >_{(x, y)} & = &
+  \frac{\left(\begin{array}{c}
+    1\\
+    0
+  \end{array}\right) \cdot \left(\begin{array}{c}
+    1\\
+    0
+  \end{array}\right)}{y^2}\\
+  & = & \frac{1}{y^2}\\
+  < \frac{\partial}{\partial y}, \frac{\partial}{\partial y} >_{(x, y)} & = &
+  \frac{\left(\begin{array}{c}
+    0\\
+    1
+  \end{array}\right) \cdot \left(\begin{array}{c}
+    0\\
+    1
+  \end{array}\right)}{y^2}\\
+  & = & \frac{1}{y^2}
+\end{eqnarray*}
+$E_1 = y \frac{\partial}{\partial x}, E_2 = y \frac{\partial}{\partial y}$ is
+a frame field. The dual 1-forms are $\theta_1 = \frac{1}{y} d x, \theta_2 =
+\frac{1}{y} d y$. The first structional equations are
+\begin{eqnarray*}
+  d \theta_1 & = & - \frac{1}{y^2} d y \wedge d x\\
+  & = & \frac{1}{y} d x \wedge \frac{1}{y} d y\\
+  & = & \omega_{12} \wedge \theta_2\\
+  d \theta_2 & = & - \frac{1}{y^2} d y \wedge d y\\
+  & = & 0\\
+  & = & - \omega_{12} \wedge \theta_1\\
+  \omega_{12} & = & \frac{1}{y} d x\\
+  d \omega_{12} & = & - \frac{1}{y^2} d y \wedge d x\\
+  & = & \frac{1}{y} d x \wedge \frac{1}{y} d y\\
+  & = & \theta_1 \wedge \theta_2
+\end{eqnarray*}
+So the Gaussian curvature of $\mathbb{H}^2$ is $K = - 1$. The area of Poincare
+half-plane is then
+\begin{eqnarray*}
+  \tmop{Area} (\mathbb{H}^2) & = & \bigiint_{\mathbb{H}^2} \theta_1 \wedge
+  \theta_2\\
+  & = & \bigiint_{\mathbb{H}^2} \frac{1}{y^2} d x \wedge d y\\
+  & = & \bigiint_{\mathbb{H}^2} \frac{1}{y^2} d x d y\\
+  & = & \int^{\infty}_{- \infty} \int^{\infty}_0 \frac{1}{y^2} d y d x\\
+  & = & \int^{\infty}_{- \infty} \left. - \frac{1}{y} \right|^{\infty}_0 d
+  x\\
+  & = & - \infty
+\end{eqnarray*}
+It should be noted that
+\begin{equation}
+  \bigiint_A f d x \wedge d y = \bigiint_A f d x d y = \bigiint_A f d y d x =
+  - \bigiint_A f d y \wedge d x
+\end{equation}}}
+
+\subsection{Covariant Derivative}
+
+{\definition*{The covariant derivative in $\mathbb{R}^3$ is a function:
+\begin{eqnarray*}
+  \nabla : \mathfrak{X} (\mathbb{R}^3) \times \mathfrak{X} (\mathbb{R}^3) &
+  \rightarrow & \mathfrak{X} (\mathbb{R}^3)\\
+  \nabla_V X & = & \left(\begin{array}{c}
+    V [X_1]\\
+    V [X_2]\\
+    V [X_3]
+  \end{array}\right)
+\end{eqnarray*}
+satisfying
+\begin{enumeratenumeric}
+  \item $\mathbb{R}- \tmop{bilinear}$ in both $V \tmop{and} X$;
+  
+  \item $f - \tmop{linear}$ in $V$: $\nabla_{f V} = f \nabla_V X$;
+  
+  \item Leibniz rule in $X$: $\nabla_V (f X) = V [f] X + f \nabla_V X$.
+\end{enumeratenumeric}}}
+
+{\definition*{On an open set $U$ of a geometric surface, a function
+\begin{eqnarray*}
+  \nabla : \mathfrak{X} (U) \times \mathfrak{X} (U) & \rightarrow &
+  \mathfrak{X} (U)
+\end{eqnarray*}
+is a covariant derivative on $U$ if it satisfies these 3 properties.}}
+
+{\theorem*{The connection form $\omega_{12}$ on $(U, E_1, E_2)$ defines a
+covariant derivative on $U$ by
+\begin{eqnarray*}
+  \nabla_V E_1 & = & \omega_{12} (V) E_2\\
+  \nabla_V E_2 & = & - \omega_{12} (V) E_1\\
+  \nabla_V (f_1 E_1) & = & V [f_1] E_1 + f_1 \omega_{12} (V) E_2\\
+  \nabla_V (f_2 E_2) & = & V [f_2] E_2 - f_2 \omega_{12} (V) E_1
+\end{eqnarray*}
+An arbitrary $X = f_1 E_1 + f_2 E_2 \in \mathfrak{X} (U)$ is
+\begin{eqnarray*}
+  \nabla_V (X) & = & (V [f_1] - f_2 \omega_{12} (V)) E_1 + (V [f_2] + f_1
+  \omega_{12} (V)) E_2
+\end{eqnarray*}
+This $\nabla_V X$ is clearly $\mathbb{R}- \tmop{bilinear}$, $f -
+\tmop{linear}$ in $V$, we can check it also satisfies the Leibniz rule.}}
+
+{\definition*{Let $\alpha : [a, b] \rightarrow M$ be a curve in a geometric
+surface and let $X$ be a vector field in $M$ along the curve $\alpha$, and
+$\mathfrak{X} (\alpha^{\ast} T_p (M))$ is a differentiable vector field in $M$
+along $\alpha$. A covariant derivative along $\alpha$ is a function
+\[ \frac{D}{d t} : \mathfrak{X} (\alpha^{\ast} T_p (M)) \rightarrow
+   \mathfrak{X} (\alpha^{\ast} T_p (M)) \]
+such that
+\begin{enumeratenumeric}
+  \item $\mathbb{R}- \tmop{linear}$ in $X$;
+  
+  \item Leibniz rule in $X$: $\frac{D}{d t} (f X) = \frac{d f}{d t} \cdot X +
+  f \frac{D X}{d t}$;
+  
+  \item If $X$ is the restriction of $\tilde{X}$ on $M$, then $\frac{D X}{d t}
+  = \nabla_{\alpha' (t)} \tilde{X}$;
+  
+  \item $\frac{d}{d t} < V, W > = < \frac{D V}{d t}, W > + < V, \frac{D W}{d
+  t} >$.
+\end{enumeratenumeric}}}
+
+{\theorem*{Given a covariant derivative $\nabla$ on $M$ and a curve $\alpha
+(t)$ in $M$, there exists a unique covariant derivative $\frac{D}{d t}$ along
+$\alpha$.}}
+
+\begin{proof}
+  On a framed open set $(U, E_1, E_2)$,
+  \begin{eqnarray*}
+    V & = & \sum V_i E_i\\
+    \frac{D V}{d t} & = & \sum V'_i (t) E_i + \sum V_i \frac{D E_i}{d t}\\
+    & = & \sum V'_i (t) E_i + \sum V_i \nabla_{\alpha' (t)} E_i
+  \end{eqnarray*}
+  Use this as the definition of $\frac{D V}{d t}$. Verify the 4 properties.
+\end{proof}
+
+{\definition*{If $\alpha : [a, b] \rightarrow M$ is a curve on a geometric
+surface $M$, then $\alpha'$ is a vector field along $\alpha$.
+\[ \alpha' (t) \xequal{\tmop{def}} \alpha_{\ast} \left( \frac{d}{d t} \right)
+\]
+The acceleration is defined as
+\[ \alpha'' (t) \xequal{\tmop{def}} \frac{D}{d t} \alpha' (t) \]
+A curve $\alpha$ in a geometric surface is a geodesic if $\alpha'' = 0$.}}
+
+\subsection{Gauss-Bonnet Theorem}
+
+Let $\beta : [a, b] \rightarrow M$ be a unit-speed curve in an oriented
+geometric surface, and $T = \beta' = \beta_{\ast} \left( \frac{d}{d s}
+\right)$. Because $\| T \| = 1$, $T' = \frac{D T}{d s}$ will be orthogonal to
+$T$,
+\begin{eqnarray*}
+  < T (s), T (s) > & = & \| T \|^2 = 1\\
+  \frac{d}{d s} < T (s), T (s) > & = & < \frac{D T}{d s}, T > + < T, \frac{D
+  T}{d s} > = 0\\
+  < \frac{D T}{d s}, T > & = & 0
+\end{eqnarray*}
+Since $M$ is oriented, there is a positive oritented orthogonal frame $T, N$
+s.t. $T' = k N$ for some $k \in \mathbb{R}$. $k$ is the geodesic curvature.
+
+{\theorem*{A unit-speed curve on an oriented geometric surface is a geodesic
+iff $k = 0$.}}
+
+Suppose $T$ makes an angle $\varphi$ relative to $E_1$ in an oriented
+orthogonal frame $E_1, E_2$,
+\[ \left(\begin{array}{c}
+     T\\
+     N
+   \end{array}\right) = \left(\begin{array}{cc}
+     \cos \varphi & \sin \varphi\\
+     - \sin \varphi & \cos \varphi
+   \end{array}\right) \left(\begin{array}{c}
+     E_1\\
+     E_2
+   \end{array}\right) \]
+Then take the derivative
+\begin{eqnarray*}
+  T' & = & \frac{D T}{d s}\\
+  & = & - \sin \varphi \frac{d \varphi}{d s} E_1 + \cos \varphi \frac{D
+  E_2}{d s} + \cos \varphi \frac{d \varphi}{d s} E_2 + \sin \varphi \frac{D
+  E_2}{d s}\\
+  & = & \frac{d \varphi}{d s} (- \sin \varphi E_1 + \cos \varphi E_2) + \cos
+  \varphi \nabla_{\beta' (s)} E_1 + \sin \varphi \nabla_{\beta' (s)} E_2\\
+  & = & \frac{d \varphi}{d s} N + (\cos \varphi) \omega_{12} (\beta') E_2 +
+  (\sin \varphi) \omega_{21} (\beta') E_1\\
+  & = & \left( \frac{d \varphi}{d s} + \omega_{12} (\beta') \right) N
+\end{eqnarray*}
+Therefore the geodesic curvature is
+\begin{equation}
+  \begin{array}{lll}
+    k & = & \frac{d \varphi}{d s} + \omega_{12} (\beta')
+  \end{array}
+\end{equation}
+{\definition*{The total geodesic curvature on $\beta$ is defined as
+\begin{eqnarray}
+  \int^b_a k (s) d s & = & \int^b_a \frac{d \varphi}{d s} d s + \int^b_a
+  \omega_{12} (\beta' (s)) d s \nonumber\\
+  & = & \varphi (b) - \varphi (a) + \int_{\beta} \omega_{12} 
+\end{eqnarray}}}
+
+{\theorem*{{\dueto{Gauss-Bonnet}} The total Gaussian curvature $M$ of a
+compact orientable geometric surface $M$ is $2 \pi$ times its Euler
+characteristic:
+\begin{equation}
+  \bigiint_D K d M = 2 \pi \mathcal{X} (M)
+\end{equation}}}
+
+\begin{proof}
+  Let $\vartriangle_i = \tmop{change} \tmop{of} \tmop{angle} \tmop{along}
+  \partial_i$, $\iota_i$ is exterior angle and $\varepsilon_i$ is exterior
+  angle at the end of the $i \tmop{th}$ edge. $T$otal geodesic curvature on
+  the boundary of a rectangle $\partial D$ is
+  \begin{eqnarray*}
+    \sum_{i = 1}^4 \int_{\partial_i} k & = & \sum_{i = 1}^4 \vartriangle_i +
+    \sum_{i = 1}^4 \int_{\partial_i} \omega_{12}\\
+    & = & 2 \pi - \sum_{i = 1}^4 \varepsilon_i + \int_{\partial x}
+    \omega_{12}\\
+    & = & 2 \pi - \sum_{i = 1}^4 (\pi - \iota_i) + \bigiint_D d \omega_{12}\\
+    & = & - 2 \pi + \sum_{i = 1}^4 \iota_i - \bigiint_D K \theta_1 \wedge
+    \theta_2\\
+    & = & - 2 \pi + \sum_{i = 1}^4 \iota_i - \bigiint_D K d M
+  \end{eqnarray*}
+  Suppose $M$ can be cut up into rectangle patches. Let $v, e, f$ be the
+  number of vertices, edges, and faces in a rectangle partition of $M$. Sum up
+  total geodesic curvature,
+  \begin{eqnarray*}
+    \sum_x \sum_{i = 1}^4 \int_{\partial_i} k & = & \sum_f - 2 \pi + \sum_v
+    \iota_i - \bigiint_D K d M\\
+    0 & = & - 2 \pi f + 2 \pi v - \bigiint_D K d M\\
+    \bigiint_D K d M & = & - 4 \pi f + 2 \pi f + 2 \pi v\\
+    & = & - 2 \pi e + 2 \pi f + 2 \pi v\\
+    & = & 2 \pi (v - e + f)\\
+    & = & 2 \pi \mathcal{X} (M)
+  \end{eqnarray*}
+  The theorem shows that total Gaussian curvature is a topological invariant.
+\end{proof}
+
+{\theorem*{Let $S$ be a surface, $D$ is an oriented polygonal region in a
+geometric surface, $k$ is the geodesic curvature, $K$ is the Gaussian
+curvature at a point in $D$. If $A_i$ is each angle of the irregular point.
+The Gauss-Bonnet Theorem is
+\begin{eqnarray}
+  \sum_{i = 1}^n (\pi - \iota_i) + \int_{\partial D} k d s + \bigiint_D K d M
+  & = & 2 \pi \mathcal{X} (M) 
+\end{eqnarray}}}
+
+\begin{proof}
+  If we use a rectangle partition, and now the boundary curves survive,
+  \begin{eqnarray*}
+    \sum_x \sum_{i = 1}^4 \int_{\partial_i} k & = & \sum_f - 2 \pi + \sum_v
+    \iota_i - \bigiint_D K d M\\
+    \int_{\partial D} k d s & = & - 2 \pi f + 2 \pi (v - n) + \sum_{i = 1}^n
+    \iota_i - \bigiint_D K d M\\
+    \int_{\partial D} k d s + \bigiint_D K d M & = & - 4 \pi f + 2 \pi f + 2
+    \pi v - 2 n \pi + \sum_{i = 1}^n \iota_i
+  \end{eqnarray*}
+  Different from previously $4 f = 2 e$, here with the boundaries we have $4 f
+  = 2 e - n$, thus
+  \begin{eqnarray*}
+    \int_{\partial D} k d s + \bigiint_D K d M & = & \pi (n - 2 e) + 2 \pi f +
+    2 \pi v - 2 n \pi + \sum_{i = 1}^n \iota_i\\
+    \int_{\partial D} k d s + \bigiint_D K d M & = & 2 \pi (v - e + f) - n \pi
+    + \sum_{i = 1}^n \iota_i\\
+    \sum_{i = 1}^n (\pi - \iota_i) + \int_{\partial D} k d s + \bigiint_D K d
+    M & = & 2 \pi \mathcal{X} (M)
+  \end{eqnarray*}
+  This is based on that the polygon can be partitioned by rectangles.
+\end{proof}
+
+{\example*{Geodesic triangle in Euclidean surface, where $k = 0, K = 0,
+\mathcal{X}= 1$, then
+\begin{eqnarray*}
+  \sum_{i = 1}^3 (\pi - \iota_i) + \int_{\partial D} 0 d s + \bigiint_D 0 d M
+  & = & 2 \pi\\
+  \sum_{i = 1}^3 \iota_i & = & \pi
+\end{eqnarray*}
+More generally for a geodesic polygon in geodesic surface,
+\begin{eqnarray*}
+  \sum_{i = 1}^n (\pi - \iota_i) + \int_{\partial D} 0 d s + \bigiint_D K d M
+  & = & 2 \pi\\
+  \sum_{i = 1}^n \iota_i & = & (n - 2) \pi + \bigiint_D K d M
+\end{eqnarray*}
+Specifically for Euclidean space where $K = 0$, $\sum_{i = 1}^n \iota_i = (n -
+2) \pi$. If it's a geodesic triangle on a sphere with radius $r$, then we have
+$K = \frac{1}{r^2}, \mathcal{X}= 1$, and
+\begin{eqnarray*}
+  \sum_{i = 1}^3 (\pi - \iota_i) + \int_{\partial D} 0 d s + \bigiint_D
+  \frac{1}{r^2} d M & = & 2 \pi\\
+  3 \pi - \sum_{i = 1}^3 \iota_i + \frac{\vartriangle}{r^2} & = & 2 \pi\\
+  \sum_{i = 1}^3 \iota_i & = & \pi - \frac{\vartriangle}{r^2}
+\end{eqnarray*}}}
+
+{\corollary*{Let $M$ be a compact orientable surface. Then TFAE:
+\begin{enumeratenumeric}
+  \item $M$ has a continuous nowhere-vanish vector field $V$;
+  
+  \item $\mathcal{X} (M) = 1$;
+  
+  \item $M$ is a torus.
+\end{enumeratenumeric}}}
+
+\begin{proof}
+  Assume 1), let $E_1 = \frac{V}{\| V \|}, E_2 = J (E_1)$. So the entire
+  surface is a framed open set. There is a unique connection form
+  $\omega_{12}$ on $M$,
+  \begin{eqnarray*}
+    d \omega_{12} & = & - K \theta_1 \wedge \theta_2\\
+    & = & - K d M
+  \end{eqnarray*}
+  According to Guass-Bonnet Theorem, then
+  \[ 0 = \int_{\partial M} \omega_{12} = \int_M d \omega_{12} = - \bigiint_M K
+     d M = - 2 \pi \mathcal{X} (M) \]
+  So $\mathcal{X} (M) = 0$. Thus $\nobracket 1) \Rightarrow \nobracket 2)$,
+  $\nobracket 2) \Rightarrow \nobracket 3)$ by Classification Theorem,
+  $\nobracket 3) \Rightarrow \nobracket 1)$ by construction.
+\end{proof}
+
+\section{Manifolds}
+
+\subsection{Topological Manifolds}
+
+{\definition*{A topological space $M$ is locally Euclidean of dimension $n$ if
+every point $p$ in $M$ has a neighborhood $U$ such that there is a
+homeomorphism $\phi$ from $U$ onto an open subset of $\mathbb{R}^n$. The pair
+$(U, \phi : U \rightarrow \mathbb{R}^n)$ is a chart, $U$ is a coordinate
+neighborhood or a coordinate open set, and $\phi$ is a coordinate map or a
+coordinate system on $U$. A chart $(U, \phi)$ is centered at $p \in U$ if
+$\phi (p) = 0$.}}
+
+{\definition*{A topological manifold is a Hausdorff, second countable, locally
+Euclidean space. It's said to be of dimension $n$ if it's locally Euclidean of
+dimension $n$.}}
+
+{\definition*{Two charts $(U, \phi : U \rightarrow \mathbb{R}^n), (V, \psi : V
+\rightarrow \mathbb{R}^n)$ of a topological manifold are $C^{\infty} -
+\tmop{compatible}$ if the two maps
+\[ \phi \circ \psi^{- 1} : \psi (U \cap V) \rightarrow \phi (U \cap V)
+   \nocomma \nocomma, \applicationspace{1 \tmop{em}} \psi \circ \phi^{- 1} :
+   \phi (U \cap V) \rightarrow \psi (U \cap V) \]
+are $C^{\infty}$. These two maps are called the transition functions between
+the charts.}}
+
+{\definition*{A $C^{\infty}$ atlas or simply an atlas on a locally Euclidean
+space $M$ is a collection $\mathfrak{U}= \{ (U_{\alpha}, \phi_{\alpha}) \}$ of
+pairwise $C^{\infty} - \tmop{compatible}$ charts that cover $M$, i.e., such
+that $M = \cup_{\alpha} U_{\alpha}$.}}
+
+An atlas $\mathfrak{M}$ on a locally Euclidean space is said to be maximal if
+it's not contained in a larger atlas; if $\mathfrak{U}$ is any other atlas
+containing $\mathfrak{M}$, then $\mathfrak{U}=\mathfrak{M}$.
+
+{\definition*{A smooth or $C^{\infty}$ manifold is a topological manifold $M$
+together with a maximal atlas. The maximal atlas is also called a
+differentiable structure on $M$. A manifold is said to have dimension $n$ if
+all of its connected components have dimension $n$. A 1-dimensional manifold
+is called a curve, a 2-dimensional manifold a surface, and an n-dimensional
+manifold an n-manifold.}}
+
+{\definition*{A Lie group is a $C^{\infty}$ manifold $G$ having a group
+structure s.t. the multiplication map
+\[ \mu : G \times G \rightarrow G \]
+and the inverse map
+\[ \iota : G \rightarrow G, \applicationspace{1 \tmop{em}} \iota (x) = x^{- 1}
+\]
+are both $C^{\infty}$.}}
+
+\subsection{Categories and Functors}
+
+A category consists of a collection of elements, called objects, and for any
+two objects $A$ and $B$, a set $\tmop{Mor} (A, B)$ of elements, called
+morphisms from $A \tmop{to} B$, s.t. given any morphism $f \in \tmop{Mor} (A,
+B)$ and any morphism $g \in \tmop{Mor} (B, C)$, the composite $g \circ f \in
+\tmop{Mor} (A, C)$ is defined. It satisfies:
+\begin{enumerateroman}
+  \item the identity axiom: for each object $A$, there is an identity morphism
+  $1_A \in \tmop{Mor} (A, A)$ s.t. for any $f \in \tmop{Mor} (A, B)$ and $g
+  \in \tmop{Mor} (B, A)$,
+  \[ f \circ 1_A = f, \applicationspace{1 \tmop{em}} 1_A \circ g = g \]
+  \item the associative axiom: for $f \in \tmop{Mor} (A, B), g \in \tmop{Mor}
+  (B, C), \tmop{and} h \in \tmop{Mor} (C, D)$,
+  \[ h \circ (g \circ f) = (h \circ g) \circ f \]
+\end{enumerateroman}
+If $f \in \tmop{Mor} (A, B)$, we often write $f : A \rightarrow B$.
+
+{\definition*{Two objects $A$ and $B$ in a category are said to be isomorphic
+if there are morphisms $f : A \rightarrow B$ and $g : B \rightarrow A$ s.t.
+\[ g \circ f = 1_A, \applicationspace{1 \tmop{em}} f \circ g = 1_B \]
+In this case both $f \tmop{and} g$ are called isomorphisms.}}
+
+{\definition*{A (covariant) functor $\mathcal{F}$ from one category
+$\mathcal{C}$ to another category $\mathcal{D}$ is a map that associates to
+each object $A$ in $\mathcal{C}$ an object $\mathcal{F} (A) \tmop{in}
+\mathcal{D}$ and to each morphism $f : A \rightarrow B$ there is a morphism
+$\mathcal{F} (f) : \mathcal{F} (A) \rightarrow \mathcal{F} (B)$ s.t.
+\begin{enumerateroman}
+  \item $\mathcal{F} (1_A) = 1_{\mathcal{F} (A)}$
+  
+  \item $\mathcal{F} (f \circ g) =\mathcal{F} (f) \circ \mathcal{F} (g)$
+\end{enumerateroman}}}
+
+{\definition*{A contravariant functor $\mathcal{F}$ from one category
+$\mathcal{C}$ to another category $\mathcal{D}$ is a map that associates to
+each object $A$ in $\mathcal{C}$ an object $\mathcal{F} (A) \tmop{in}
+\mathcal{D}$ and to each morphism $f : A \rightarrow B$ there is a morphism
+$\mathcal{F} (f) : \mathcal{F} (A) \rightarrow \mathcal{F} (B)$ s.t.
+\begin{enumerateroman}
+  \item $\mathcal{F} (1_A) = 1_{\mathcal{F} (A)}$
+  
+  \item $\mathcal{F} (f \circ g) =\mathcal{F} (g) \circ \mathcal{F} (f)$
+\end{enumerateroman}}}
+
+{\example*{The pushforward map $F_{\ast} : T_p (N) \rightarrow T_{F (p)} (M)$
+is a functor because
+\[ (G \circ F)_{\ast} = G_{\ast} \circ F_{\ast} \]
+The pullback map otherwises satisfies
+\[ (G \circ F)^{\ast} = F^{\ast} \circ G^{\ast} \]}}
+
+\subsection{Vector Bundle}
+
+A bundle map construction is a functor from the category of smooth manifolds
+to the category of vector bundles.
+
+{\definition*{Let $M$ be a smooth manifold, the tangent bundle of $M$ is the
+union of all the tangent spaces of $M$:
+\[ T M = \bigcup_{p \in M} T_p M = \coprod_{p \in M} T_p M \]}}
+
+{\definition*{Product bundle is a special case of $\pi : E \mapsto M$:
+\[ \pi : M \times V \mapsto M \]}}
+
+\section{Appendix}
+
+\subsection{Generalization Map}
+
+The generalization from single-variable calculus to several-variable calculus
+is as follows {\cite{tao2007differential}}.
+\begin{eqnarray*}
+  \tmop{indefinite} \tmop{integral} & \longrightarrow &
+  \left\{\begin{array}{l}
+    \tmop{solution} \tmop{to} \tmop{differential} \tmop{equations}\\
+    \tmop{integral} \tmop{of} a \tmop{connection}, \tmop{vector} \tmop{field},
+    \tmop{or} \tmop{bundle}
+  \end{array}\right.\\
+  \tmop{unsigned} \tmop{definite} \tmop{integral} & \longrightarrow &
+  \tmop{Lebesgue} \tmop{integral} \longrightarrow \tmop{integration} \tmop{of}
+  a \tmop{measure} \tmop{space}\\
+  \tmop{signed} \tmop{definite} \tmop{integral} & \longrightarrow &
+  \tmop{integration} \tmop{of} \tmop{forms}
+\end{eqnarray*}
+
+\subsection{Notation Table}
+
+\begin{table}[h]
+  \begin{tabular}{lll}
+    & Math & Physics\\
+    $\int^a_a f (x) d x = 0$ & closed 1-form $f (x) d x$ & conservative
+    force\\
+    & exact form & potential function
+  \end{tabular}
+  \caption{Terminology Dictionary}
+\end{table}
+
+\begin{thebibliography}{1}
+  \bibitem[1]{Chern2001}陈省身.
+  {\newblock}高斯---博内定理及麦克斯韦方程.
+  {\newblock}\tmtextit{科学}, 3:6, 2001.{\newblock}
+  
+  \bibitem[2]{o2006elementary}Barrett O'neill. {\newblock}\tmtextit{Elementary
+  differential geometry}. {\newblock}Elsevier, 2006.{\newblock}
+  
+  \bibitem[3]{tao2007differential}Terence Tao. {\newblock}Differential forms
+  and integration. {\newblock}\tmtextit{Tech Rep Dep Math UCLA},
+  2007.{\newblock}
+  
+  \bibitem[4]{tu2010introduction}Loring Tu. {\newblock}\tmtextit{An
+  Introduction to Manifolds}. {\newblock}Universitext. Springer New York,
+  2010.{\newblock}
+  
+  \bibitem[5]{weyl1918gravitation}Hermann Weyl. {\newblock}Gravitation and
+  electricity. {\newblock}\tmtextit{Sitzungsber. Preuss. Akad. Wiss. Berlin
+  (Math. Phys.)}, 465, 1918.{\newblock}
+\end{thebibliography}
+
+\end{document}
