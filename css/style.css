@@ -1450,7 +1450,9 @@ ol {
     position: relative;
     overflow: hidden;
     
-    padding-bottom: 56.5%;
+    padding-bottom: 54%;
+    width: 100%;
+    height: auto;
     
 }
 
