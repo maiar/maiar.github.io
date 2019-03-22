@@ -526,6 +526,14 @@ ol {
 	margin-bottom: 10px;
 }
 
+.resume-list a {
+	color: black;
+}
+
+.resume-list a:hover {
+	color: darkturquoise;
+}
+
 .resume-list h4 {
 	font-size: 16px;
 	text-transform: uppercase;
