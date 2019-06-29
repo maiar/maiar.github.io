@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Liangchun - Personal Website</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Civic - CV Resume">
+	<meta name="keywords" content="resume, civic, onepage, creative, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Favicon -->   
+	<link href="img/favicon.jpg" rel="shortcut icon"/>
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i,700" rel="stylesheet">
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/flaticon.css"/>
+	<link rel="stylesheet" href="css/owl.carousel.css"/>
+	<link rel="stylesheet" href="css/magnific-popup.css"/>
+	<link rel="stylesheet" href="css/style.css"/>
+
+
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+    
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+    </script>
+    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+</head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+	
+	<!-- Header section start -->
+	<header class="header-section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="site-logo">
+						<h2><a href="index.html">Liangchun Xu </a></h2>
+						<p>Software development engineer</p>
+					</div>
+				</div>
+				<div class="col-md-8 text-md-right header-buttons">
+					<!--a href="#" class="site-btn">Download CV</a-->
+					<a href="index.html" class="site-btn">Home Page</a>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- Header section end -->
+
+	<!-- Hero section start -->
+	<section class="hero-section spad">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-10 offset-xl-1">
+					<div class="row">
+                        <div class="blog-text">
+                            <h2> A Tour of C++ </h2>
+                            <p>All the materials here are organized by topics.</p>
+                            <h3> String </h3>
+                            <p>All the materials here are organized by topics. Please click the title to see full pages. </p>
+                            
+<pre style="color:#000000;background:#ffffff;"><span style="color:#800000; font-weight:bold; ">class</span> Solution <span style="color:#800080; ">{</span>
+<span style="color:#800000; font-weight:bold; ">public</span><span style="color:#e34adc; ">:</span>
+    <span style="color:#603000; ">string</span> addBinary<span style="color:#808030; ">(</span><span style="color:#603000; ">string</span> a<span style="color:#808030; ">,</span> <span style="color:#603000; ">string</span> b<span style="color:#808030; ">)</span> <span style="color:#800080; ">{</span>
+        <span style="color:#800000; font-weight:bold; ">long</span> decA <span style="color:#808030; ">=</span> <span style="color:#603000; ">atoi</span><span style="color:#808030; ">(</span>a<span style="color:#808030; ">.</span>c_str<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>
+        <span style="color:#800000; font-weight:bold; ">long</span> decB <span style="color:#808030; ">=</span> <span style="color:#603000; ">atoi</span><span style="color:#808030; ">(</span>b<span style="color:#808030; ">.</span>c_str<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>
+        
+        <span style="color:#800000; font-weight:bold; ">long</span> res <span style="color:#808030; ">=</span> decA <span style="color:#808030; ">+</span> decB<span style="color:#800080; ">;</span>
+        <span style="color:#603000; ">string</span> resStr <span style="color:#808030; ">=</span> to_string<span style="color:#808030; ">(</span>res<span style="color:#808030; ">)</span><span style="color:#800080; ">;</span>
+        
+        <span style="color:#603000; ">cout</span> <span style="color:#808030; ">&lt;</span><span style="color:#808030; ">&lt;</span> resStr <span style="color:#808030; ">&lt;</span><span style="color:#808030; ">&lt;</span> <span style="color:#603000; ">endl</span><span style="color:#800080; ">;</span>
+        
+        <span style="color:#800000; font-weight:bold; ">int</span> i <span style="color:#808030; ">=</span> resStr<span style="color:#808030; ">.</span>size<span style="color:#808030; ">(</span><span style="color:#808030; ">)</span><span style="color:#808030; ">-</span><span style="color:#008c00; ">1</span><span style="color:#800080; ">;</span>
+        
+        <span style="color:#800000; font-weight:bold; ">while</span> <span style="color:#808030; ">(</span>i <span style="color:#808030; ">&gt;</span><span style="color:#808030; ">=</span> <span style="color:#008c00; ">1</span><span style="color:#808030; ">)</span> <span style="color:#800080; ">{</span>
+            <span style="color:#800000; font-weight:bold; ">if</span> <span style="color:#808030; ">(</span>resStr<span style="color:#808030; ">[</span>i<span style="color:#808030; ">]</span> <span style="color:#808030; ">=</span><span style="color:#808030; ">=</span> <span style="color:#0000e6; ">'2'</span><span style="color:#808030; ">)</span> <span style="color:#800080; ">{</span>
+                resStr<span style="color:#808030; ">[</span>i<span style="color:#808030; ">]</span> <span style="color:#808030; ">=</span> <span style="color:#0000e6; ">'0'</span><span style="color:#800080; ">;</span>
+                resStr<span style="color:#808030; ">[</span>i<span style="color:#808030; ">-</span><span style="color:#008c00; ">1</span><span style="color:#808030; ">]</span> <span style="color:#808030; ">+</span><span style="color:#808030; ">=</span> <span style="color:#008c00; ">1</span><span style="color:#800080; ">;</span>
+            <span style="color:#800080; ">}</span> <span style="color:#800000; font-weight:bold; ">else</span> <span style="color:#800000; font-weight:bold; ">if</span> <span style="color:#808030; ">(</span>resStr<span style="color:#808030; ">[</span>i<span style="color:#808030; ">]</span> <span style="color:#808030; ">=</span><span style="color:#808030; ">=</span> <span style="color:#0000e6; ">'3'</span><span style="color:#808030; ">)</span> <span style="color:#800080; ">{</span>
+                resStr<span style="color:#808030; ">[</span>i<span style="color:#808030; ">]</span> <span style="color:#808030; ">=</span> <span style="color:#0000e6; ">'1'</span><span style="color:#800080; ">;</span>
+                resStr<span style="color:#808030; ">[</span>i<span style="color:#808030; ">-</span><span style="color:#008c00; ">1</span><span style="color:#808030; ">]</span> <span style="color:#808030; ">+</span><span style="color:#808030; ">=</span> <span style="color:#008c00; ">1</span><span style="color:#800080; ">;</span>
+            <span style="color:#800080; ">}</span>
+            
+            <span style="color:#808030; ">-</span><span style="color:#808030; ">-</span>i<span style="color:#800080; ">;</span>
+        <span style="color:#800080; ">}</span>
+        
+        <span style="color:#800000; font-weight:bold; ">if</span> <span style="color:#808030; ">(</span>resStr<span style="color:#808030; ">[</span><span style="color:#008c00; ">0</span><span style="color:#808030; ">]</span> <span style="color:#808030; ">=</span><span style="color:#808030; ">=</span> <span style="color:#0000e6; ">'2'</span><span style="color:#808030; ">)</span> <span style="color:#800080; ">{</span>
+            resStr<span style="color:#808030; ">[</span><span style="color:#008c00; ">0</span><span style="color:#808030; ">]</span> <span style="color:#808030; ">=</span> <span style="color:#0000e6; ">'0'</span><span style="color:#800080; ">;</span>
+            <span style="color:#800000; font-weight:bold; ">return</span> <span style="color:#0000e6; ">'1'</span> <span style="color:#808030; ">+</span> resStr<span style="color:#800080; ">;</span>
+        <span style="color:#800080; ">}</span> <span style="color:#800000; font-weight:bold; ">else</span> <span style="color:#800000; font-weight:bold; ">if</span> <span style="color:#808030; ">(</span>resStr<span style="color:#808030; ">[</span><span style="color:#008c00; ">0</span><span style="color:#808030; ">]</span> <span style="color:#808030; ">=</span><span style="color:#808030; ">=</span> <span style="color:#0000e6; ">'3'</span><span style="color:#808030; ">)</span> <span style="color:#800080; ">{</span>
+            resStr<span style="color:#808030; ">[</span><span style="color:#008c00; ">0</span><span style="color:#808030; ">]</span> <span style="color:#808030; ">=</span> <span style="color:#0000e6; ">'1'</span><span style="color:#800080; ">;</span>
+            <span style="color:#800000; font-weight:bold; ">return</span> <span style="color:#0000e6; ">'1'</span> <span style="color:#808030; ">+</span> resStr<span style="color:#800080; ">;</span>
+        <span style="color:#800080; ">}</span>
+        
+        <span style="color:#800000; font-weight:bold; ">return</span> resStr<span style="color:#800080; ">;</span>
+        
+    <span style="color:#800080; ">}</span>
+<span style="color:#800080; ">}</span><span style="color:#800080; ">;</span>
+</pre>
+                            
+                            <pre><span class="lineno"> 1 </span><span class="k">class</span> <span class="n">Solution</span> {
+<span class="lineno"> 2 </span><span class="n">public:</span>
+<span class="lineno"> 3 </span>    <span class="n">string</span> <span class="n">addBinary</span>(<span class="n">string</span> <span class="n">a</span>, <span class="n">string</span> <span class="n">b</span>) {
+<span class="lineno"> 4 </span>        <span class="n">long</span> <span class="n">decA</span> = <span class="n">atoi</span>(<span class="n">a</span>.<span class="n">c_str</span>());
+<span class="lineno"> 5 </span>        <span class="n">long</span> <span class="n">decB</span> = <span class="n">atoi</span>(<span class="n">b</span>.<span class="n">c_str</span>());
+<span class="lineno"> 6 </span>        
+<span class="lineno"> 7 </span>        <span class="n">long</span> <span class="n">res</span> = <span class="n">decA</span> + <span class="n">decB</span>;
+<span class="lineno"> 8 </span>        <span class="n">string</span> <span class="n">resStr</span> = <span class="n">to_string</span>(<span class="n">res</span>);
+<span class="lineno"> 9 </span>        
+<span class="lineno">10 </span>        <span class="n">cout</span> &lt;&lt; <span class="n">resStr</span> &lt;&lt; <span class="n">endl</span>;
+<span class="lineno">11 </span>        
+<span class="lineno">12 </span>        <span class="nb">int</span> <span class="n">i</span> = <span class="n">resStr</span>.<span class="n">size</span>()-<span class="mi">1</span>;
+<span class="lineno">13 </span>        
+<span class="lineno">14 </span>        <span class="k">while</span> (<span class="n">i</span> &gt;= <span class="mi">1</span>) {
+<span class="lineno">15 </span>            <span class="k">if</span> (<span class="n">resStr</span>[<span class="n">i</span>] == <span class="s">'2'</span>) {
+<span class="lineno">16 </span>                <span class="n">resStr</span>[<span class="n">i</span>] = <span class="s">'0'</span>;
+<span class="lineno">17 </span>                <span class="n">resStr</span>[<span class="n">i-1</span>] += <span class="mi">1</span>;
+<span class="lineno">18 </span>            } <span class="k">else</span> <span class="k">if</span> (<span class="n">resStr</span>[<span class="n">i</span>] == <span class="s">'3'</span>) {
+<span class="lineno">19 </span>                <span class="n">resStr</span>[<span class="n">i</span>] = <span class="s">'1'</span>;
+<span class="lineno">20 </span>                <span class="n">resStr</span>[<span class="n">i-1</span>] += <span class="mi">1</span>;
+<span class="lineno">21 </span>            }
+<span class="lineno">22 </span>            
+<span class="lineno">23 </span>            --<span class="n">i</span>;
+<span class="lineno">24 </span>        }
+<span class="lineno">25 </span>        
+<span class="lineno">26 </span>        <span class="k">if</span> (<span class="n">resStr</span>[<span class="mi">0</span>] == <span class="s">'2'</span>) {
+<span class="lineno">27 </span>            <span class="n">resStr</span>[<span class="mi">0</span>] = <span class="s">'0'</span>;
+<span class="lineno">28 </span>            <span class="k">return</span> <span class="s">'1'</span> + <span class="n">resStr</span>;
+<span class="lineno">29 </span>        } <span class="k">else</span> <span class="k">if</span> (<span class="n">resStr</span>[<span class="mi">0</span>] == <span class="s">'3'</span>) {
+<span class="lineno">30 </span>            <span class="n">resStr</span>[<span class="mi">0</span>] = <span class="s">'1'</span>;
+<span class="lineno">31 </span>            <span class="k">return</span> <span class="s">'1'</span> + <span class="n">resStr</span>;
+<span class="lineno">32 </span>        }
+<span class="lineno">33 </span>        
+<span class="lineno">34 </span>        <span class="k">return</span> <span class="n">resStr</span>;
+<span class="lineno">35 </span>        
+<span class="lineno">36 </span>    }
+<span class="lineno">37 </span>};
+</pre>
+                            
+
+                        </div>  
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Hero section end -->
+    
+    <div class="social-section">                
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <div class="social-link-warp">
+                        <div class="social-links">
+                            <!-- a href=""><i class="fa fa-pinterest"></i></a -->
+                            <a href="https://www.linkedin.com/in/liangchunxu/"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/lxu01/"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/profile.php?id=100007294547395"><i class="fa fa-facebook"></i></a>
+                            <!-- a href=""><i class="fa fa-twitter"></i></a -->
+                        </div>
+                        <h2 class="hidden-md hidden-sm">Contact Me</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>	
+
+	<!-- Footer section start -->
+	<footer class="footer-section">
+		<div class="container text-center">
+			<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</div>
+		</div>
+	</footer>
+	<!-- Footer section end -->
+
+
+	<!--====== Javascripts & Jquery ======-->
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/magnific-popup.min.js"></script>
+	<script src="js/circle-progress.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
